@@ -58,13 +58,13 @@ html { scroll-behavior: smooth; }
     </a>
     <nav class="hidden md:flex items-center gap-6 text-sm">
       <a href="#vision" class="text-muted hover:text-ink transition font-medium">背景・テーマ</a>
+      <a href="#roadmap" class="text-amber font-bold hover:text-ink transition">現在地</a>
       <a href="#approach" class="text-muted hover:text-ink transition font-medium">5つの計画</a>
-      <a href="#future" class="text-muted hover:text-ink transition font-medium">目指す未来</a>
       <a href="#log" class="text-muted hover:text-ink transition font-medium">活動記録</a>
     </nav>
     <div class="flex items-center gap-2">
-      <span class="hidden lg:inline-flex text-xs font-bold text-leaf bg-[#EAF4EF] border border-[#D1E7DD] px-3 py-1.5 rounded-full">探究活動 進行中</span>
-      <a href="#approach" class="hidden sm:inline-flex bg-moss text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-ink transition">計画を見る</a>
+      <span class="hidden lg:inline-flex items-center gap-1.5 text-xs font-bold text-[#7A4A0A] bg-amberLight border border-[#F0D9A8] px-3 py-1.5 rounded-full"><span class="w-2 h-2 bg-amber rounded-full animate-pulse"></span> フェーズ0 — 企画・リサーチ中</span>
+      <a href="#roadmap" class="hidden sm:inline-flex bg-moss text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-ink transition">現在地を見る</a>
       <button id="menuBtn" class="md:hidden w-10 h-10 rounded-full border border-line flex items-center justify-center" aria-label="メニュー">
         <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M1 2h16M1 7h16M1 12h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </button>
@@ -73,8 +73,8 @@ html { scroll-behavior: smooth; }
   <div id="mobileNav" class="hidden md:hidden border-t border-line bg-white">
     <div class="px-5 py-3 flex flex-col">
       <a href="#vision" class="py-3 border-b border-line text-sm font-medium">背景・テーマ</a>
+      <a href="#roadmap" class="py-3 border-b border-line text-sm font-bold text-amber">● 現在地（フェーズ0）</a>
       <a href="#approach" class="py-3 border-b border-line text-sm font-medium">5つのアプローチ</a>
-      <a href="#future" class="py-3 border-b border-line text-sm font-medium">目指す未来</a>
       <a href="#log" class="py-3 text-sm font-medium">活動記録</a>
     </div>
   </div>
@@ -88,7 +88,7 @@ html { scroll-behavior: smooth; }
         <div class="inline-flex items-center gap-2 bg-white border border-line rounded-full px-3 py-1.5 text-xs">
           <span class="w-1.5 h-1.5 bg-amber rounded-full"></span>
           <span class="font-bold text-muted">樹徳高等学校 2SS1班 探究活動</span>
-          <span class="hidden sm:inline text-[11px] bg-moss text-white px-2 py-0.5 rounded-full">Gunma × Konnyaku</span>
+          <span class="hidden sm:inline text-[11px] bg-amber text-white px-2 py-0.5 rounded-full font-bold">フェーズ0</span>
         </div>
         <h1 class="font-maru font-black leading-[1.05] mt-5">
           <span class="block text-[13px] tracking-[0.18em] text-muted font-sans font-bold mb-2">KONNYAKU DE GUNMA WO MORIAGERU</span>
@@ -98,7 +98,8 @@ html { scroll-behavior: smooth; }
         </h1>
         <p class="mt-5 text-[14px] sm:text-[15px] leading-7 text-muted max-w-[560px]">
           群馬の魅力度をもっと高めたい。私たちが選んだのは、<span class="font-bold text-ink">群馬の名産・こんにゃく</span>。<br>
-          農家の方を<span class="font-bold text-moss">間接的に支援</span>しながら、群馬全体を元気にする方法を探しています。
+          農家の方を<span class="font-bold text-moss">間接的に支援</span>しながら、群馬全体を元気にする方法を探しています。<br>
+          <span class="inline-flex items-center gap-1.5 mt-3 text-xs font-bold text-amber bg-amberLight border border-[#F0D9A8] px-3 py-1 rounded-full">● 現在 フェーズ0：企画を考えたり、調べたりしている段階です</span>
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
           <a href="#vision" class="inline-flex items-center gap-2 bg-moss text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-ink transition">私たちの計画を見る <span aria-hidden="true">→</span></a>
@@ -116,9 +117,10 @@ html { scroll-behavior: smooth; }
             <p class="font-maru font-black text-[22px] mt-1">5<span class="text-sm font-bold text-muted"> PLAN</span></p>
             <p class="text-[11px] leading-tight text-muted mt-1">多角的に<br>魅力を研究</p>
           </div>
-          <div class="bg-moss text-white rounded-2xl p-4">
-            <p class="text-[10px] tracking-[0.12em] text-white/70 font-bold">STATUS</p>
-            <p class="font-maru font-bold text-sm mt-2 leading-tight">計画フェーズ<br>進行中</p>
+          <div class="bg-amber text-white rounded-2xl p-4">
+            <p class="text-[10px] tracking-[0.12em] text-white/80 font-bold">NOW</p>
+            <p class="font-maru font-bold text-sm mt-2 leading-tight">フェーズ0<br>企画・リサーチ</p>
+            <p class="text-[10px] text-white/80 mt-1">2026.09 現在</p>
           </div>
         </div>
       </div>
@@ -232,6 +234,56 @@ html { scroll-behavior: smooth; }
   </div>
 </section>
 
+<!-- ROADMAP — フェーズ0を明示 -->
+<section id="roadmap" class="py-10 bg-white border-y border-line">
+  <div class="max-w-[1120px] mx-auto px-5 sm:px-6">
+    <div class="flex flex-wrap items-end justify-between gap-4 reveal">
+      <div>
+        <p class="text-xs tracking-[0.16em] text-amber font-bold">ROADMAP — 現在地</p>
+        <h2 class="font-maru font-black text-[22px] sm:text-[26px] mt-1">今は<span class="text-amber">フェーズ0</span>。まずは知ることから。</h2>
+        <p class="text-sm text-muted mt-1">企画を考えたり、調べたりしている段階です。ここから一歩ずつ進みます。</p>
+      </div>
+      <span class="inline-flex items-center gap-2 bg-amberLight border border-[#F0D9A8] text-[#7A4A0A] px-4 py-2 rounded-full text-xs font-bold">● フェーズ0 進行中 / 全4フェーズ</span>
+    </div>
+    <!-- タイムライン -->
+    <div class="mt-8 relative">
+      <div class="hidden sm:block absolute top-[28px] left-[5%] right-[5%] h-[3px] bg-line"></div>
+      <div class="hidden sm:block absolute top-[28px] left-[5%] w-[22%] h-[3px] bg-amber"></div>
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+        <div class="relative bg-amberLight border-2 border-amber rounded-2xl p-5">
+          <span class="absolute -top-2 -right-2 text-[10px] font-black bg-amber text-white px-2 py-0.5 rounded-full">NOW</span>
+          <p class="text-xs font-bold text-amber">フェーズ 0</p>
+          <p class="font-maru font-black text-sm mt-1">企画・リサーチ</p>
+          <p class="text-xs text-muted mt-2 leading-5">成分、スイーツ案、加工方法、連携先、伝え方を調べる。←今ここ</p>
+          <div class="mt-3 w-full bg-white border border-[#F0D9A8] rounded-full h-2 overflow-hidden">
+            <div class="h-full bg-amber" style="width: 35%"></div>
+          </div>
+          <p class="text-[11px] text-muted mt-1">35% 進行中</p>
+        </div>
+        <div class="relative bg-cream rounded-2xl border border-line p-5 opacity-90">
+          <p class="text-xs font-bold text-muted">フェーズ 1</p>
+          <p class="font-maru font-bold text-sm mt-1">深掘り・検証</p>
+          <p class="text-xs text-muted mt-2 leading-5">インタビューや試作で仮説を確かめる</p>
+          <span class="inline-block mt-3 text-xs bg-white border border-line px-2.5 py-1 rounded-full">予定</span>
+        </div>
+        <div class="relative bg-cream rounded-2xl border border-line p-5 opacity-90">
+          <p class="text-xs font-bold text-muted">フェーズ 2</p>
+          <p class="font-maru font-bold text-sm mt-1">形にする</p>
+          <p class="text-xs text-muted mt-2 leading-5">スイーツ試作・パッケージ・発表資料作成</p>
+          <span class="inline-block mt-3 text-xs bg-white border border-line px-2.5 py-1 rounded-full">予定</span>
+        </div>
+        <div class="relative bg-cream rounded-2xl border border-line p-5 opacity-90">
+          <p class="text-xs font-bold text-muted">フェーズ 3</p>
+          <p class="font-maru font-bold text-sm mt-1">伝える・広げる</p>
+          <p class="text-xs text-muted mt-2 leading-5">文化祭・SNS・地域への発信</p>
+          <span class="inline-block mt-3 text-xs bg-white border border-line px-2.5 py-1 rounded-full">予定</span>
+        </div>
+      </div>
+    </div>
+    <p class="text-xs text-muted mt-4 text-center">※ このロードマップは活動とともに更新されます。フェーズ0が終わり次第、フェーズ1の詳細を追加します。</p>
+  </div>
+</section>
+
 <!-- WHY -->
 <section class="py-14 bg-white border-y border-line">
   <div class="max-w-[1120px] mx-auto px-5 sm:px-6">
@@ -279,74 +331,79 @@ html { scroll-behavior: smooth; }
 <section id="approach" class="py-14 lg:py-20 bg-cream">
   <div class="max-w-[1120px] mx-auto px-5 sm:px-6">
     <div class="text-center max-w-[680px] mx-auto reveal">
-      <span class="inline-flex items-center gap-2 bg-white border border-line rounded-full px-4 py-1.5 text-xs font-bold">OUR 5 APPROACHES</span>
+      <span class="inline-flex items-center gap-2 bg-amberLight border border-[#F0D9A8] text-[#7A4A0A] px-4 py-1.5 text-xs font-bold">● フェーズ0で今取り組んでいること</span>
       <h2 class="font-maru font-black text-[26px] sm:text-[32px] leading-tight mt-3">5つのアプローチで、<br>こんにゃくの可能性を探る。</h2>
-      <p class="text-sm text-muted mt-3 leading-6">まだ計画段階。だからこそ自由な発想で。私たちが考えた5つの切り口です。</p>
+      <p class="text-sm text-muted mt-3 leading-6">今はすべて「調べる・考える」段階。5つの切り口で、こんにゃくと群馬のことを知ることから始めています。</p>
     </div>
 
     <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="reveal bg-white rounded-2xl border border-line p-6">
+      <div class="reveal bg-white rounded-2xl border border-line p-6 relative">
+        <span class="absolute top-4 right-4 text-[10px] font-bold bg-amberLight border border-[#F0D9A8] text-[#7A4A0A] px-2 py-0.5 rounded-full">進行中</span>
         <div class="flex items-start justify-between">
           <span class="w-10 h-10 rounded-xl bg-cream border border-line flex items-center justify-center">🔬</span>
           <span class="text-3xl font-black text-black/5">01</span>
         </div>
-        <p class="text-[11px] tracking-[0.12em] text-amber font-bold mt-4">RESEARCH</p>
+        <p class="text-[11px] tracking-[0.12em] text-amber font-bold mt-4">RESEARCH — フェーズ0</p>
         <h3 class="font-maru font-bold text-[16px] mt-1">こんにゃくの成分を調べる</h3>
-        <p class="text-sm leading-6 text-muted mt-2">人体への良い影響・メリットを徹底リサーチ。根拠を持って伝えられるように。</p>
+        <p class="text-sm leading-6 text-muted mt-2">人体への良い影響・メリットを徹底リサーチ。グルコマンナンの働きを根拠を持って伝えられるように。</p>
         <div class="mt-4 flex gap-2">
-          <span class="text-xs bg-cream border border-line px-2.5 py-1 rounded-full">成分分析</span>
+          <span class="text-xs bg-amber text-white px-2.5 py-1 rounded-full font-bold">リサーチ中</span>
           <span class="text-xs bg-cream border border-line px-2.5 py-1 rounded-full">健康</span>
         </div>
       </div>
-      <div class="reveal bg-white rounded-2xl border border-line p-6" style="transition-delay:0.04s">
+      <div class="reveal bg-white rounded-2xl border border-line p-6 relative" style="transition-delay:0.04s">
+        <span class="absolute top-4 right-4 text-[10px] font-bold bg-amberLight border border-[#F0D9A8] text-[#7A4A0A] px-2 py-0.5 rounded-full">アイデア出し中</span>
         <div class="flex items-start justify-between">
           <span class="w-10 h-10 rounded-xl bg-amber text-white flex items-center justify-center">🍰</span>
           <span class="text-3xl font-black text-black/5">02</span>
         </div>
-        <p class="text-[11px] tracking-[0.12em] text-amber font-bold mt-4">SWEETS</p>
+        <p class="text-[11px] tracking-[0.12em] text-amber font-bold mt-4">SWEETS — フェーズ0</p>
         <h3 class="font-maru font-bold text-[16px] mt-1">こんにゃくスイーツを考える</h3>
-        <p class="text-sm leading-6 text-muted mt-2">若い世代にも刺さる新しいスイーツを。ゼリー、わらび餅風、パフェ…。</p>
+        <p class="text-sm leading-6 text-muted mt-2">若い世代にも刺さる新しいスイーツを。ゼリー、わらび餅風、パフェ…妄想から始める。</p>
         <div class="mt-4 flex gap-2">
-          <span class="text-xs bg-cream border border-line px-2.5 py-1 rounded-full">スイーツ</span>
+          <span class="text-xs bg-amber text-white px-2.5 py-1 rounded-full font-bold">検討中</span>
           <span class="text-xs bg-cream border border-line px-2.5 py-1 rounded-full">Z世代向け</span>
         </div>
       </div>
-      <div class="reveal bg-white rounded-2xl border border-line p-6" style="transition-delay:0.08s">
+      <div class="reveal bg-white rounded-2xl border border-line p-6 relative" style="transition-delay:0.08s">
+        <span class="absolute top-4 right-4 text-[10px] font-bold bg-cream border border-line px-2 py-0.5 rounded-full">調査中</span>
         <div class="flex items-start justify-between">
           <span class="w-10 h-10 rounded-xl bg-cream border border-line flex items-center justify-center">♨️</span>
           <span class="text-3xl font-black text-black/5">03</span>
         </div>
-        <p class="text-[11px] tracking-[0.12em] text-amber font-bold mt-4">PROCESSING</p>
+        <p class="text-[11px] tracking-[0.12em] text-amber font-bold mt-4">PROCESSING — フェーズ0</p>
         <h3 class="font-maru font-bold text-[16px] mt-1">様々な加工方法を調べる</h3>
-        <p class="text-sm leading-6 text-muted mt-2">板こんにゃく、しらたき、刺身こんにゃく…加工で変わる食感と用途。</p>
+        <p class="text-sm leading-6 text-muted mt-2">板こんにゃく、しらたき、刺身こんにゃく…加工で変わる食感と用途を学ぶ。</p>
         <div class="mt-4 flex gap-2">
           <span class="text-xs bg-cream border border-line px-2.5 py-1 rounded-full">加工</span>
           <span class="text-xs bg-cream border border-line px-2.5 py-1 rounded-full">伝統</span>
         </div>
       </div>
-      <div class="reveal bg-moss text-white rounded-2xl p-6" style="transition-delay:0.06s">
+      <div class="reveal bg-moss text-white rounded-2xl p-6 relative" style="transition-delay:0.06s">
+        <span class="absolute top-4 right-4 text-[10px] font-bold bg-white/15 border border-white/20 px-2 py-0.5 rounded-full">リスト作成中</span>
         <div class="flex items-start justify-between">
           <span class="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">🤝</span>
           <span class="text-3xl font-black text-white/15">04</span>
         </div>
-        <p class="text-[11px] tracking-[0.12em] text-amberLight font-bold mt-4">COLLABORATION</p>
+        <p class="text-[11px] tracking-[0.12em] text-amberLight font-bold mt-4">COLLABORATION — フェーズ0</p>
         <h3 class="font-maru font-bold text-[16px] mt-1">協力してくれそうな企業・お店を調べる</h3>
-        <p class="text-sm leading-6 text-white/75 mt-2">地元のこんにゃく屋さん、カフェ、道の駅…実際に連絡を取り協力をお願いする。</p>
+        <p class="text-sm leading-6 text-white/75 mt-2">地元のこんにゃく屋さん、カフェ、道の駅…候補をリストアップし、連絡の準備を進める。</p>
         <div class="mt-4 flex gap-2">
           <span class="text-xs bg-white/10 border border-white/15 px-2.5 py-1 rounded-full">企業連携</span>
-          <span class="text-xs bg-amber text-white px-2.5 py-1 rounded-full font-bold">挑戦中</span>
+          <span class="text-xs bg-amber text-white px-2.5 py-1 rounded-full font-bold">準備中</span>
         </div>
       </div>
-      <div class="reveal bg-white rounded-2xl border border-line p-6 md:col-span-2 lg:col-span-2" style="transition-delay:0.1s">
+      <div class="reveal bg-white rounded-2xl border border-line p-6 md:col-span-2 lg:col-span-2 relative" style="transition-delay:0.1s">
+        <span class="absolute top-4 right-4 text-[10px] font-bold bg-cream border border-line px-2 py-0.5 rounded-full">検討中</span>
         <div class="flex flex-col sm:flex-row gap-5">
           <div class="flex-1">
             <div class="flex items-start justify-between">
               <span class="w-10 h-10 rounded-xl bg-moss text-white flex items-center justify-center">📣</span>
               <span class="text-3xl font-black text-black/5">05</span>
             </div>
-            <p class="text-[11px] tracking-[0.12em] text-amber font-bold mt-4">PROMOTION</p>
+            <p class="text-[11px] tracking-[0.12em] text-amber font-bold mt-4">PROMOTION — フェーズ0</p>
             <h3 class="font-maru font-bold text-[16px] mt-1">こんにゃくの良さをどう伝えるか考える</h3>
-            <p class="text-sm leading-6 text-muted mt-2">SNS、パッケージ、イベント…「伝わる」工夫を。高校生だからこそできる発信を。</p>
+            <p class="text-sm leading-6 text-muted mt-2">SNS、パッケージ、イベント…「伝わる」工夫を。高校生だからこそできる発信を考える。</p>
             <div class="mt-4 flex flex-wrap gap-2">
               <span class="text-xs bg-cream border border-line px-2.5 py-1 rounded-full">SNS</span>
               <span class="text-xs bg-cream border border-line px-2.5 py-1 rounded-full">デザイン</span>
@@ -415,54 +472,58 @@ html { scroll-behavior: smooth; }
   </div>
 </section>
 
-<!-- LOG -->
+<!-- LOG — フェーズ0の記録を中心に -->
 <section id="log" class="py-14 lg:py-20 bg-cream">
   <div class="max-w-[1120px] mx-auto px-5 sm:px-6">
     <div class="flex flex-wrap items-end justify-between gap-4 reveal">
       <div>
-        <p class="text-xs tracking-[0.16em] text-amber font-bold">ACTIVITY LOG</p>
+        <p class="text-xs tracking-[0.16em] text-amber font-bold">ACTIVITY LOG — フェーズ0</p>
         <h2 class="font-maru font-black text-[24px] sm:text-[28px] mt-1">活動記録</h2>
-        <p class="text-sm text-muted mt-1">これから、ここに私たちの足跡を残していきます。</p>
+        <p class="text-sm text-muted mt-1">今は<span class="font-bold text-ink">フェーズ0：企画・リサーチ段階</span>。ここに今の活動を残しています。</p>
       </div>
-      <span class="inline-flex items-center gap-2 bg-white border border-line rounded-full px-4 py-2 text-xs font-bold"><span class="w-2 h-2 bg-amber rounded-full"></span> Coming Soon — 3件 計画中</span>
+      <span class="inline-flex items-center gap-2 bg-amberLight border border-[#F0D9A8] text-[#7A4A0A] px-4 py-2 rounded-full text-xs font-bold"><span class="w-2 h-2 bg-amber rounded-full animate-pulse"></span> フェーズ0 進行中 — 3件</span>
     </div>
     <div class="mt-8 grid md:grid-cols-3 gap-4">
       <div class="reveal bg-white rounded-2xl border border-line overflow-hidden">
-        <div class="h-36 bg-cream border-b border-line flex flex-col items-center justify-center gap-2">
+        <div class="h-36 bg-amberLight/50 border-b border-[#F0D9A8] flex flex-col items-center justify-center gap-2">
+          <span class="w-12 h-12 rounded-xl bg-white border border-[#F0D9A8] flex items-center justify-center">💡</span>
+          <span class="text-xs font-bold text-[#7A4A0A]">フェーズ0 — 完了</span>
+        </div>
+        <div class="p-5">
+          <p class="text-xs font-bold text-amber">2026.09.02 — テーマ決定</p>
+          <h3 class="font-maru font-bold text-[15px] mt-1">課題テーマを決定</h3>
+          <p class="text-xs leading-5 text-muted mt-2">「こんにゃくを使って農家の方を間接的に支援でき、群馬を盛り上げる」をテーマに設定。背景や目的を整理しました。</p>
+          <span class="inline-block mt-3 text-xs bg-moss text-white px-2.5 py-1 rounded-full font-bold">完了</span>
+        </div>
+      </div>
+      <div class="reveal bg-white rounded-2xl border-2 border-amber overflow-hidden" style="transition-delay:0.04s">
+        <div class="h-36 bg-cream border-b border-line flex flex-col items-center justify-center gap-2 relative">
+          <span class="absolute top-3 right-3 text-[10px] font-bold bg-amber text-white px-2 py-0.5 rounded-full">NOW</span>
           <span class="w-12 h-12 rounded-xl bg-white border border-line flex items-center justify-center">📝</span>
-          <span class="text-xs font-bold text-muted">PHASE 01 — 予定</span>
+          <span class="text-xs font-bold text-amber">フェーズ0 — 進行中</span>
         </div>
         <div class="p-5">
-          <p class="text-xs text-muted">2026.09 —</p>
-          <h3 class="font-maru font-bold text-[15px] mt-1">こんにゃくの成分を調べる</h3>
-          <p class="text-xs leading-5 text-muted mt-2">グルコマンナンの効果や健康メリットを調査。分かりやすくまとめて発信予定。</p>
+          <p class="text-xs font-bold text-amber">2026.09 — 進行中</p>
+          <h3 class="font-maru font-bold text-[15px] mt-1">5つの切り口でリサーチ中</h3>
+          <p class="text-xs leading-5 text-muted mt-2">成分・スイーツ案・加工方法・連携先・伝え方を分担して調査。分かったことをこのサイトで発信準備中。</p>
+          <span class="inline-block mt-3 text-xs bg-amberLight border border-[#F0D9A8] text-[#7A4A0A] px-2.5 py-1 rounded-full font-bold">35% 進行中</span>
         </div>
       </div>
-      <div class="reveal bg-white rounded-2xl border border-line overflow-hidden" style="transition-delay:0.04s">
-        <div class="h-36 bg-cream border-b border-line flex flex-col items-center justify-center gap-2">
-          <span class="w-12 h-12 rounded-xl bg-white border border-line flex items-center justify-center">🍰</span>
-          <span class="text-xs font-bold text-muted">PHASE 02 — 準備中</span>
+      <div class="reveal bg-white rounded-2xl border border-dashed border-line overflow-hidden" style="transition-delay:0.08s">
+        <div class="h-36 bg-cream/50 border-b border-dashed border-line flex flex-col items-center justify-center gap-2">
+          <span class="w-12 h-12 rounded-xl bg-white border border-dashed border-line flex items-center justify-center text-muted">→</span>
+          <span class="text-xs font-bold text-muted">次のステップ</span>
         </div>
         <div class="p-5">
-          <p class="text-xs text-muted">2026.10 —</p>
-          <h3 class="font-maru font-bold text-[15px] mt-1">スイーツ試作に挑戦</h3>
-          <p class="text-xs leading-5 text-muted mt-2">こんにゃくスイーツのアイデア出しと試作。文化祭での発表に向けて。</p>
-        </div>
-      </div>
-      <div class="reveal bg-white rounded-2xl border border-line overflow-hidden" style="transition-delay:0.08s">
-        <div class="h-36 bg-cream border-b border-line flex flex-col items-center justify-center gap-2">
-          <span class="w-12 h-12 rounded-xl bg-white border border-line flex items-center justify-center">🤝</span>
-          <span class="text-xs font-bold text-muted">PHASE 03 — 計画中</span>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-muted">2026.11 —</p>
-          <h3 class="font-maru font-bold text-[15px] mt-1">企業・お店へのアプローチ</h3>
-          <p class="text-xs leading-5 text-muted mt-2">協力してくれそうな企業やお店をリストアップ。実際にお話を聞きに行きます。</p>
+          <p class="text-xs text-muted">2026.10 予定 — フェーズ1へ</p>
+          <h3 class="font-maru font-bold text-[15px] mt-1">深掘り・検証へ</h3>
+          <p class="text-xs leading-5 text-muted mt-2">リサーチ結果をまとめ、インタビューや試作など次の行動に移ります。結果はここに追加します。</p>
+          <span class="inline-block mt-3 text-xs bg-cream border border-line px-2.5 py-1 rounded-full">準備中</span>
         </div>
       </div>
     </div>
-    <div class="mt-6 bg-white border border-dashed border-line rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm reveal">
-      <span class="text-muted">このカードをコピーして、日付・本文を書き換えるだけで追加できます。</span>
+    <div class="mt-6 bg-white border border-line rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm reveal">
+      <span class="text-muted"><span class="font-bold text-ink">フェーズ0</span> の間はこの3枚を更新。フェーズが進んだら新しいカードを追加します。</span>
       <span class="text-xs bg-cream border border-line px-3 py-1.5 rounded-full font-bold">HTMLを編集するだけ</span>
     </div>
   </div>
@@ -483,9 +544,9 @@ html { scroll-behavior: smooth; }
           <p class="text-[11px] tracking-[0.12em] text-muted font-bold">THEME</p>
           <p class="text-xs font-bold mt-1">こんにゃくで群馬を盛り上げる</p>
         </div>
-        <div class="bg-moss text-white rounded-xl px-5 py-3 text-center">
-          <p class="text-[11px] tracking-[0.12em] text-white/70 font-bold">STATUS</p>
-          <p class="text-xs font-bold mt-1">探究活動 進行中</p>
+        <div class="bg-amberLight border border-[#F0D9A8] rounded-xl px-5 py-3 text-center">
+          <p class="text-[11px] tracking-[0.12em] text-[#7A4A0A] font-bold">NOW</p>
+          <p class="text-xs font-bold mt-1 text-[#7A4A0A]">フェーズ0 進行中</p>
         </div>
       </div>
     </div>
@@ -496,11 +557,11 @@ html { scroll-behavior: smooth; }
 <section class="py-12 bg-cream">
   <div class="max-w-[1120px] mx-auto px-5 sm:px-6">
     <div class="bg-moss rounded-2xl p-7 sm:p-10 text-white text-center reveal">
-      <p class="text-xs tracking-[0.18em] text-white/60 font-bold">FOLLOW OUR JOURNEY</p>
-      <h2 class="font-maru font-black text-[22px] sm:text-[28px] mt-2 leading-tight">私たちの挑戦は、<br>まだ始まったばかり。</h2>
-      <p class="text-sm text-white/70 mt-3 max-w-[520px] mx-auto leading-6">このサイトは活動とともに更新されていきます。次は「こんにゃくの成分調査」から。ぜひまた見に来てください。</p>
+      <p class="text-xs tracking-[0.18em] text-white/60 font-bold">FOLLOW OUR JOURNEY — フェーズ0</p>
+      <h2 class="font-maru font-black text-[22px] sm:text-[28px] mt-2 leading-tight">今は、知ることから。<br>一歩ずつ、進んでいます。</h2>
+      <p class="text-sm text-white/70 mt-3 max-w-[520px] mx-auto leading-6">今はフェーズ0。企画を考え、調べる段階です。このサイトも活動とともに、フェーズ1、2、3へと更新していきます。</p>
       <div class="mt-6 flex flex-wrap justify-center gap-3">
-        <a href="#approach" class="bg-white text-moss px-6 py-3 rounded-full text-sm font-bold hover:bg-cream transition">5つの計画をもう一度見る</a>
+        <a href="#roadmap" class="bg-white text-moss px-6 py-3 rounded-full text-sm font-bold hover:bg-cream transition">ロードマップを見る</a>
         <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="bg-white/10 border border-white/20 text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-white hover:text-moss transition">トップに戻る ↑</a>
       </div>
       <p class="text-xs text-white/40 mt-6">© 2026 樹徳高等学校 2SS1班 — GUNMA KONNYAKU PROJECT</p>
