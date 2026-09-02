@@ -1,0 +1,7 @@
+# 個人情報含む資料は公開しない
+2SS 1班.pdf
+*.pdf
+
+# OS
+.DS_Store
+Thumbs.db

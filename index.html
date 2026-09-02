@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>こんにゃくで、群馬をもっと盛り上げる。 | 樹徳高等学校 2SS1班 探究プロジェクト</title>
+<meta name="description" content="樹徳高等学校 2SS1班の探究活動。群馬の名産こんにゃくを使って農家の方を間接的に支援し、群馬を盛り上げるプロジェクト。">
+<meta property="og:title" content="こんにゃくで、群馬をもっと盛り上げる。">
+<meta property="og:description" content="樹徳高等学校 2SS1班 探究プロジェクト - 群馬のこんにゃくで地域を元気に">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@700;900&family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Noto Sans JP','sans-serif'],
+        maru: ['Zen Maru Gothic','sans-serif'],
+        outfit: ['Outfit','sans-serif'],
+      },
+      colors: {
+        cream: '#FDF8F0',
+        konnyaku: '#2D4A3E',
+        moss: '#1A3329',
+        amber: '#E8A838',
+        mist: '#8B9A8F',
+        konGray: '#E8E0D6',
+        konDark: '#3A3A3A',
+      },
+      animation: {
+        'float': 'float 6s ease-in-out infinite',
+        'float-delayed': 'float 6s ease-in-out 2s infinite',
+        'marquee': 'marquee 20s linear infinite',
+        'spin-slow': 'spin 20s linear infinite',
+      },
+      keyframes: {
+        float: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-14px)' } },
+        marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
+      }
+    }
+  }
+}
+</script>
+<style>
+* { scroll-behavior: auto !important; }
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+::selection { background: #E8A838; color: #1A3329; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #FDF8F0; }
+::-webkit-scrollbar-thumb { background: #2D4A3E; border-radius: 999px; }
+/* loader */
+#loader { transition: transform 1s cubic-bezier(0.85,0,0.15,1), opacity 0.6s ease; }
+#loader.hidden-loader { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+.reveal { opacity: 0; transform: translateY(28px); }
+.reveal.active { opacity: 1; transform: translateY(0); transition: all 0.9s cubic-bezier(0.16,1,0.3,1); }
+.stagger > * { opacity: 0; transform: translateY(20px); }
+.glass { backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%); }
+.hero-blob { filter: blur(40px); }
+.text-stroke { -webkit-text-stroke: 1.5px #2D4A3E; color: transparent; }
+.magnetic { transition: transform 0.2s cubic-bezier(0.23,1,0.32,1); }
+@media (prefers-reduced-motion: reduce) { .reveal, .stagger > * { opacity:1; transform:none; } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+</head>
+<body class="bg-cream text-konnyaku font-sans antialiased overflow-x-hidden selection:bg-amber">
+
+<!-- progress bar -->
+<div id="progress" class="fixed top-0 left-0 h-[3px] bg-amber z-[100] origin-left" style="width:0%"></div>
+
+<!-- loader -->
+<div id="loader" class="fixed inset-0 z-[99] bg-moss flex flex-col items-center justify-center text-cream">
+  <div class="relative">
+    <div class="w-24 h-24 rounded-[28px] bg-cream/10 border border-cream/20 flex items-center justify-center animate-float">
+      <span class="text-4xl">🍢</span>
+    </div>
+    <div class="absolute -top-2 -right-2 w-8 h-8 bg-amber rounded-full animate-pulse"></div>
+    <div class="absolute -bottom-3 -left-3 w-12 h-12 bg-cream/10 rounded-full blur-xl"></div>
+  </div>
+  <p class="mt-8 font-maru text-xl tracking-widest">こんにゃく</p>
+  <p class="font-outfit text-xs tracking-[0.3em] opacity-60 mt-1">KONNYAKU PROJECT 2026</p>
+  <div class="mt-10 w-40 h-[2px] bg-cream/20 rounded-full overflow-hidden">
+    <div id="loader-bar" class="h-full bg-amber w-0"></div>
+  </div>
+  <p id="loader-pct" class="font-outfit text-xs mt-3 tabular-nums opacity-70">0%</p>
+</div>
+
+<!-- header -->
+<header id="header" class="fixed top-0 inset-x-0 z-40 transition-all duration-500">
+  <div class="max-w-[1280px] mx-auto px-6 py-4">
+    <div class="flex items-center justify-between glass bg-cream/70 border border-konnyaku/5 rounded-full px-6 py-3 shadow-[0_8px_32px_rgba(45,74,62,0.08)]">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-full bg-konnyaku flex items-center justify-center text-cream font-maru text-sm group-hover:rotate-12 transition-transform">こ</div>
+        <div class="leading-none">
+          <p class="font-maru font-black text-[13px] tracking-tight">樹徳高等学校 2SS1班</p>
+          <p class="font-outfit text-[10px] tracking-[0.2em] opacity-60">JUTOKU 2SS1</p>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-1 bg-white/60 rounded-full p-1.5">
+        <a href="#vision" class="px-4 py-1.5 rounded-full text-xs font-medium hover:bg-konnyaku hover:text-cream transition">Vision</a>
+        <a href="#approach" class="px-4 py-1.5 rounded-full text-xs font-medium hover:bg-konnyaku hover:text-cream transition">Plan</a>
+        <a href="#future" class="px-4 py-1.5 rounded-full text-xs font-medium hover:bg-konnyaku hover:text-cream transition">Future</a>
+        <a href="#log" class="px-4 py-1.5 rounded-full text-xs font-medium hover:bg-konnyaku hover:text-cream transition">Log</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <span class="hidden lg:inline-flex items-center gap-2 text-[11px] font-medium bg-amber text-moss px-3 py-1.5 rounded-full">
+          <span class="w-2 h-2 bg-moss rounded-full animate-pulse"></span> 探究活動 進行中
+        </span>
+        <a href="#approach" class="hidden sm:inline-flex bg-konnyaku text-cream px-5 py-2.5 rounded-full text-xs font-bold hover:bg-moss transition items-center gap-1.5">計画を見る <span>→</span></a>
+        <button id="menuBtn" class="md:hidden w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center">
+          <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 1H17M1 6H17M1 11H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <!-- mobile nav -->
+    <div id="mobileNav" class="hidden md:hidden mt-3 glass bg-cream rounded-[24px] p-2 border border-konnyaku/5 shadow-xl">
+      <a href="#vision" class="block px-6 py-4 rounded-2xl hover:bg-white font-medium">Vision</a>
+      <a href="#approach" class="block px-6 py-4 rounded-2xl hover:bg-white font-medium">5つのアプローチ</a>
+      <a href="#future" class="block px-6 py-4 rounded-2xl hover:bg-white font-medium">目指す未来</a>
+      <a href="#log" class="block px-6 py-4 rounded-2xl hover:bg-white font-medium">活動記録</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative min-h-[96vh] flex items-center overflow-hidden bg-cream pt-24">
+  <!-- bg blobs -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute -top-20 -right-20 w-[680px] h-[680px] bg-konnyaku/5 rounded-full hero-blob"></div>
+    <div class="absolute top-[30%] -left-40 w-[520px] h-[520px] bg-amber/10 rounded-full hero-blob"></div>
+    <div class="absolute bottom-0 right-[20%] w-[420px] h-[420px] bg-moss/5 rounded-full hero-blob"></div>
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(#2D4A3E 1px, transparent 1px); background-size: 24px 24px;"></div>
+  </div>
+
+  <div class="relative max-w-[1280px] mx-auto px-6 w-full grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center py-12 lg:py-0">
+    <!-- left copy -->
+    <div class="relative z-10">
+      <div class="inline-flex items-center gap-3 bg-white border border-konnyaku/10 rounded-full px-4 py-2 text-xs font-medium shadow-sm reveal">
+        <span class="w-7 h-7 rounded-full bg-amber flex items-center justify-center text-moss text-[11px]">✦</span>
+        樹徳高等学校 2SS1班 探究活動
+        <span class="hidden sm:inline-flex bg-konnyaku text-cream px-2.5 py-1 rounded-full text-[10px]">Gunma × Konnyaku</span>
+      </div>
+
+      <h1 class="font-maru font-black leading-[0.92] mt-6">
+        <span class="block text-[14px] sm:text-[15px] tracking-[0.2em] font-sans font-bold text-mist mb-3 reveal" style="transition-delay:0.1s">KONNYAKU DE GUNMA WO MORIAGERU</span>
+        <span class="block text-[42px] sm:text-[54px] lg:text-[64px] tracking-tight reveal" style="transition-delay:0.2s">こんにゃくで、</span>
+        <span class="block text-[42px] sm:text-[54px] lg:text-[64px] tracking-tight flex items-baseline gap-3 reveal" style="transition-delay:0.3s">
+          群馬を<span class="relative inline-block">
+            <span class="relative z-10 bg-amber px-3 pb-1 rounded-[12px] rotate-[-1deg] inline-block">もっと</span>
+            <span class="absolute inset-0 bg-amber rounded-[12px] rotate-[-1deg] -z-0"></span>
+          </span>
+        </span>
+        <span class="block text-[42px] sm:text-[54px] lg:text-[64px] tracking-tight reveal" style="transition-delay:0.4s">盛り上げる。</span>
+      </h1>
+
+      <p class="mt-6 text-[15px] lg:text-[16px] leading-8 text-konnyaku/70 max-w-[560px] reveal" style="transition-delay:0.5s">
+        群馬の魅力度をもっと高めたい。私たちが選んだのは、<span class="font-bold text-konnyaku underline decoration-amber decoration-4 underline-offset-4">群馬の名産・こんにゃく</span>。<br>
+        農家の方を<span class="bg-konnyaku text-cream px-1.5 py-0.5 rounded text-sm">間接的に支援</span>しながら、群馬全体を元気にする方法を探しています。
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3 reveal" style="transition-delay:0.6s">
+        <a href="#vision" class="magnetic group inline-flex items-center gap-3 bg-konnyaku text-cream px-7 py-4 rounded-full font-bold text-sm hover:bg-moss transition shadow-[0_12px_24px_rgba(45,74,62,0.2)]">
+          私たちの計画を見る
+          <span class="w-8 h-8 bg-cream text-konnyaku rounded-full flex items-center justify-center group-hover:translate-x-0.5 transition">→</span>
+        </a>
+        <a href="#approach" class="inline-flex items-center gap-2 bg-white border border-konnyaku/10 px-6 py-4 rounded-full font-bold text-sm hover:border-konnyaku/20 transition">
+          <span class="w-2 h-2 bg-amber rounded-full animate-pulse"></span> 5つのアプローチ
+        </a>
+      </div>
+
+      <div class="mt-10 grid grid-cols-3 gap-4 max-w-[520px] reveal" style="transition-delay:0.7s">
+        <div class="bg-white rounded-2xl p-4 border border-black/5">
+          <p class="font-outfit text-[11px] tracking-widest opacity-50">GUNMA SHARE</p>
+          <p class="font-maru font-black text-2xl mt-1"><span class="counter" data-target="90">0</span><span class="text-amber">%</span></p>
+          <p class="text-[11px] leading-tight opacity-60 mt-1">こんにゃく芋<br>生産量 日本一</p>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-black/5">
+          <p class="font-outfit text-[11px] tracking-widest opacity-50">APPROACH</p>
+          <p class="font-maru font-black text-2xl mt-1">5<span class="text-amber text-sm"> PLAN</span></p>
+          <p class="text-[11px] leading-tight opacity-60 mt-1">多角的に<br>魅力を研究</p>
+        </div>
+        <div class="bg-konnyaku text-cream rounded-2xl p-4">
+          <p class="font-outfit text-[11px] tracking-widest opacity-60">STATUS</p>
+          <p class="font-maru font-black text-sm mt-2 leading-tight">計画フェーズ<br>進行中</p>
+          <p class="text-[11px] opacity-60 mt-1">→ 実践へ</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- right visual -->
+    <div class="relative lg:h-[680px] flex items-center justify-center">
+      <!-- card stack -->
+      <div class="relative w-full max-w-[520px]">
+        <!-- main konnyaku visual -->
+        <div class="relative bg-white rounded-[32px] p-6 sm:p-8 shadow-[0_24px_64px_rgba(45,74,62,0.12)] border border-black/5 reveal" style="transition-delay:0.4s">
+          <div class="flex items-center justify-between">
+            <p class="font-outfit text-[11px] tracking-[0.2em] opacity-40">FEATURED / KONNYAKU</p>
+            <span class="text-[11px] bg-amber px-3 py-1 rounded-full font-bold">群馬名産</span>
+          </div>
+          <!-- image placeholder - css art -->
+          <div class="mt-6 relative aspect-[4/3] rounded-[24px] overflow-hidden bg-gradient-to-br from-konGray via-cream to-white border border-black/5 flex items-center justify-center">
+            <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#2D4A3E 1px, transparent 1px); background-size: 18px 18px;"></div>
+            <!-- konnyaku illustration -->
+            <div class="relative flex flex-col items-center">
+              <div class="w-[160px] sm:w-[190px] h-[110px] bg-[#3A3A3A] rounded-[24px] relative shadow-[inset_0_8px_16px_rgba(255,255,255,0.15),0_12px_24px_rgba(0,0,0,0.2)] animate-float">
+                <div class="absolute inset-3 rounded-[16px] bg-gradient-to-br from-white/10 to-transparent"></div>
+                <div class="absolute top-4 left-6 w-3 h-3 bg-white/20 rounded-full blur-[1px]"></div>
+                <div class="absolute bottom-5 right-8 w-2 h-2 bg-white/10 rounded-full"></div>
+                <!-- spots -->
+                <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(#000 1.5px, transparent 1.5px); background-size: 14px 14px;"></div>
+              </div>
+              <div class="w-[150px] h-[18px] bg-black/10 rounded-full blur-[6px] mt-4"></div>
+              <p class="font-maru font-black text-konnyaku mt-4 text-sm">板こんにゃく</p>
+              <p class="font-outfit text-[10px] tracking-widest opacity-40">GUNMA KONNYAKU</p>
+            </div>
+            <!-- floating badges -->
+            <div class="absolute top-4 left-4 bg-white rounded-2xl px-3 py-2 shadow-lg flex items-center gap-2 animate-float">
+              <span class="w-8 h-8 bg-green-50 rounded-full flex items-center justify-center text-green-600 text-sm">✓</span>
+              <div class="leading-none">
+                <p class="text-[11px] font-bold">食物繊維たっぷり</p>
+                <p class="text-[10px] opacity-60">ヘルシー</p>
+              </div>
+            </div>
+            <div class="absolute bottom-4 right-4 bg-konnyaku text-cream rounded-2xl px-3 py-2 shadow-lg flex items-center gap-2 animate-float-delayed">
+              <span class="w-8 h-8 bg-white/15 rounded-full flex items-center justify-center text-sm">◉</span>
+              <div class="leading-none">
+                <p class="text-[11px] font-bold">低カロリー</p>
+                <p class="text-[10px] opacity-70">約5kcal/100g</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="flex -space-x-2">
+              <span class="w-8 h-8 rounded-full bg-amber border-2 border-white flex items-center justify-center text-xs">●</span>
+              <span class="w-8 h-8 rounded-full bg-konnyaku border-2 border-white flex items-center justify-center text-cream text-xs">●</span>
+              <span class="w-8 h-8 rounded-full bg-moss border-2 border-white"></span>
+            </div>
+            <p class="text-xs leading-tight"><span class="font-bold">多様な加工</span>で無限の可能性<br><span class="opacity-60 text-[11px]">スイーツから料理まで変幻自在</span></p>
+            <span class="ml-auto w-10 h-10 rounded-full bg-cream border border-black/5 flex items-center justify-center">→</span>
+          </div>
+        </div>
+        <!-- floating mini cards -->
+        <div class="absolute -right-2 sm:-right-6 -top-6 bg-moss text-cream rounded-2xl px-4 py-3 shadow-xl rotate-[2deg] hidden sm:flex items-center gap-3 animate-float">
+          <div class="w-10 h-10 rounded-full bg-amber flex items-center justify-center text-moss">✦</div>
+          <div>
+            <p class="text-xs font-bold leading-none">生産量 日本一</p>
+            <p class="text-[11px] opacity-70">群馬県 約90%シェア</p>
+          </div>
+        </div>
+        <div class="absolute -left-4 sm:-left-8 bottom-10 bg-white rounded-2xl px-4 py-3 shadow-xl -rotate-[2deg] hidden sm:flex items-center gap-3 border border-black/5 animate-float-delayed">
+          <div class="w-10 h-10 rounded-full bg-cream flex items-center justify-center">🍰</div>
+          <div>
+            <p class="text-xs font-bold leading-none">新しい食べ方</p>
+            <p class="text-[11px] opacity-60">スイーツに挑戦中</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- marquee -->
+<div class="bg-konnyaku text-cream py-4 overflow-hidden border-y border-white/10">
+  <div class="flex animate-marquee whitespace-nowrap">
+    <span class="flex items-center gap-6 font-maru font-black text-sm tracking-widest px-6">こんにゃくで群馬を盛り上げる <span class="w-1.5 h-1.5 bg-amber rounded-full"></span> 樹徳高等学校 2SS1班 <span class="w-1.5 h-1.5 bg-amber rounded-full"></span> GUNMA KONNYAKU PROJECT <span class="w-1.5 h-1.5 bg-amber rounded-full"></span> </span>
+    <span class="flex items-center gap-6 font-maru font-black text-sm tracking-widest px-6">こんにゃくで群馬を盛り上げる <span class="w-1.5 h-1.5 bg-amber rounded-full"></span> 樹徳高等学校 2SS1班 <span class="w-1.5 h-1.5 bg-amber rounded-full"></span> GUNMA KONNYAKU PROJECT <span class="w-1.5 h-1.5 bg-amber rounded-full"></span> </span>
+    <span class="flex items-center gap-6 font-maru font-black text-sm tracking-widest px-6">こんにゃくで群馬を盛り上げる <span class="w-1.5 h-1.5 bg-amber rounded-full"></span> 樹徳高等学校 2SS1班 <span class="w-1.5 h-1.5 bg-amber rounded-full"></span> GUNMA KONNYAKU PROJECT <span class="w-1.5 h-1.5 bg-amber rounded-full"></span> </span>
+    <span class="flex items-center gap-6 font-maru font-black text-sm tracking-widest px-6">こんにゃくで群馬を盛り上げる <span class="w-1.5 h-1.5 bg-amber rounded-full"></span> 樹徳高等学校 2SS1班 <span class="w-1.5 h-1.5 bg-amber rounded-full"></span> GUNMA KONNYAKU PROJECT <span class="w-1.5 h-1.5 bg-amber rounded-full"></span> </span>
+  </div>
+</div>
+
+<!-- VISION -->
+<section id="vision" class="py-20 lg:py-28 bg-cream relative">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="grid lg:grid-cols-12 gap-8 items-start">
+      <div class="lg:col-span-5">
+        <p class="font-outfit text-xs tracking-[0.25em] text-amber font-bold reveal">01 — BACKGROUND</p>
+        <h2 class="font-maru font-black text-[32px] lg:text-[40px] leading-[1.1] mt-3 reveal">
+          群馬は<br>
+          <span class="text-stroke">魅力度が</span><br>
+          低い<span class="inline-flex align-middle ml-2 bg-konnyaku text-cream text-sm px-3 py-1 rounded-full rotate-[-2deg]">!?</span>
+        </h2>
+        <p class="mt-6 text-sm leading-7 text-konnyaku/70 bg-white rounded-2xl p-6 border border-black/5 reveal">
+          私たちはまず、群馬の現状に向き合いました。豊かな自然と文化があるのに、全国の魅力度ランキングではなかなか上位に上がれない。<br><br>
+          <span class="font-bold text-konnyaku">「群馬の名産品を使って、群馬をもっと盛り上げたい！」</span><br>
+          そんな想いから、私たちの探究はスタートしました。
+        </p>
+        <div class="mt-6 flex items-center gap-3 reveal">
+          <div class="w-12 h-12 rounded-full bg-amber flex items-center justify-center text-moss font-black">!</div>
+          <p class="text-xs leading-tight"><span class="font-bold">課題意識</span>から始まった<br><span class="opacity-60">等身大の探究プロジェクト</span></p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="bg-moss text-cream rounded-[32px] p-8 lg:p-10 relative overflow-hidden reveal">
+          <div class="absolute -top-20 -right-20 w-[320px] h-[320px] bg-amber/10 rounded-full blur-3xl"></div>
+          <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(white 1px, transparent 1px); background-size: 20px 20px;"></div>
+          <p class="relative font-outfit text-xs tracking-[0.2em] opacity-60">02 — OUR THEME</p>
+          <h3 class="relative font-maru font-black text-[26px] lg:text-[34px] leading-tight mt-3">
+            こんにゃくを使って<br>
+            農家の方を<span class="text-amber">間接的に支援</span>でき、<br>
+            群馬を盛り上げる！！！！
+          </h3>
+          <p class="relative mt-4 text-sm leading-7 opacity-80">
+            直接的な支援ではなく、<span class="text-cream font-bold underline decoration-amber decoration-2">こんにゃくの価値を高め、需要を生み出す</span>ことで、巡り巡って農家の方の力になりたい。私たちが考えた、高校生なりの「間接支援」のカタチです。
+          </p>
+          <div class="relative mt-8 grid sm:grid-cols-3 gap-4">
+            <div class="bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/10">
+              <p class="text-amber font-outfit text-xs">STEP 01</p>
+              <p class="font-bold text-sm mt-1">知ってもらう</p>
+              <p class="text-xs opacity-70 mt-1 leading-relaxed">こんにゃく・群馬の魅力を発信</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/10">
+              <p class="text-amber font-outfit text-xs">STEP 02</p>
+              <p class="font-bold text-sm mt-1">食べてもらう</p>
+              <p class="text-xs opacity-70 mt-1 leading-relaxed">新しい食べ方を提案</p>
+            </div>
+            <div class="bg-amber text-moss rounded-2xl p-4">
+              <p class="font-outfit text-xs opacity-70">STEP 03</p>
+              <p class="font-bold text-sm mt-1">盛り上がる</p>
+              <p class="text-xs opacity-80 mt-1 leading-relaxed">群馬全体が元気に</p>
+            </div>
+          </div>
+          <div class="relative mt-8 flex items-center gap-4 text-xs">
+            <span class="w-10 h-[1px] bg-white/30"></span>
+            <span class="opacity-60">樹徳高等学校 2SS1班の挑戦</span>
+          </div>
+        </div>
+
+        <!-- stats row -->
+        <div class="mt-6 grid grid-cols-3 gap-4 stagger">
+          <div class="bg-white rounded-2xl p-5 border border-black/5 text-center">
+            <p class="font-outfit font-black text-3xl text-konnyaku">90<span class="text-amber text-xl">%</span></p>
+            <p class="text-[11px] font-bold mt-1">群馬が占めるシェア</p>
+            <p class="text-[11px] opacity-60">こんにゃく芋生産</p>
+          </div>
+          <div class="bg-white rounded-2xl p-5 border border-black/5 text-center">
+            <p class="font-outfit font-black text-3xl text-konnyaku">0<span class="text-amber text-xl">kcal</span></p>
+            <p class="text-[11px] font-bold mt-1">ほぼゼロカロリー</p>
+            <p class="text-[11px] opacity-60">ヘルシー食材</p>
+          </div>
+          <div class="bg-white rounded-2xl p-5 border border-black/5 text-center">
+            <p class="font-outfit font-black text-3xl text-konnyaku">∞</p>
+            <p class="text-[11px] font-bold mt-1">無限のレシピ</p>
+            <p class="text-[11px] opacity-60">和洋中スイーツ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY KONNYAKU -->
+<section class="py-16 lg:py-20 bg-white border-y border-black/5">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div class="reveal">
+        <p class="font-outfit text-xs tracking-[0.25em] text-amber font-bold">WHY KONNYAKU?</p>
+        <h2 class="font-maru font-black text-[28px] lg:text-[36px] leading-tight mt-2">なぜ、こんにゃくなのか。</h2>
+        <p class="text-sm opacity-60 mt-2">群馬とこんにゃくは、切っても切れない関係。</p>
+      </div>
+      <p class="hidden lg:block text-xs opacity-50 max-w-[360px] leading-relaxed">群馬の風土が育んだこんにゃく芋。そこから生まれるこんにゃくは、健康・文化・可能性のすべてを備えています。</p>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-3 gap-6 stagger">
+      <div class="group relative bg-cream rounded-[28px] p-7 border border-black/5 overflow-hidden hover:shadow-[0_16px_40px_rgba(45,74,62,0.08)] transition-all duration-500 hover:-translate-y-1">
+        <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber/10 rounded-full group-hover:scale-110 transition duration-700"></div>
+        <div class="relative w-14 h-14 rounded-2xl bg-white border border-black/5 flex items-center justify-center text-xl group-hover:rotate-6 transition">🌿</div>
+        <h3 class="relative font-maru font-black text-lg mt-5">健康メリットがすごい</h3>
+        <p class="relative text-sm leading-6 opacity-70 mt-3">食物繊維「グルコマンナン」が豊富。腸内環境を整え、低カロリーで満腹感も。現代の健康志向にぴったり。</p>
+        <div class="relative mt-6 flex gap-2">
+          <span class="text-[11px] bg-white border border-black/5 px-3 py-1 rounded-full">食物繊維</span>
+          <span class="text-[11px] bg-white border border-black/5 px-3 py-1 rounded-full">低カロリー</span>
+        </div>
+      </div>
+      <div class="group relative bg-konnyaku text-cream rounded-[28px] p-7 overflow-hidden hover:shadow-[0_16px_40px_rgba(45,74,62,0.2)] transition-all duration-500 hover:-translate-y-1">
+        <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber/20 rounded-full group-hover:scale-110 transition duration-700"></div>
+        <div class="relative w-14 h-14 rounded-2xl bg-white/10 backdrop-blur flex items-center justify-center text-xl group-hover:rotate-6 transition">🏔️</div>
+        <h3 class="relative font-maru font-black text-lg mt-5 text-cream">群馬の誇り</h3>
+        <p class="relative text-sm leading-6 opacity-80 mt-3">全国シェア約90%。群馬の気候・土壌が育てるこんにゃく芋は、まさに群馬のアイデンティティ。</p>
+        <div class="relative mt-6 flex gap-2">
+          <span class="text-[11px] bg-white/10 border border-white/10 px-3 py-1 rounded-full">日本一</span>
+          <span class="text-[11px] bg-amber text-moss px-3 py-1 rounded-full font-bold">Gunma Pride</span>
+        </div>
+      </div>
+      <div class="group relative bg-cream rounded-[28px] p-7 border border-black/5 overflow-hidden hover:shadow-[0_16px_40px_rgba(45,74,62,0.08)] transition-all duration-500 hover:-translate-y-1">
+        <div class="absolute -top-10 -right-10 w-32 h-32 bg-konnyaku/5 rounded-full group-hover:scale-110 transition duration-700"></div>
+        <div class="relative w-14 h-14 rounded-2xl bg-white border border-black/5 flex items-center justify-center text-xl group-hover:rotate-6 transition">✨</div>
+        <h3 class="relative font-maru font-black text-lg mt-5">変幻自在の食材</h3>
+        <p class="relative text-sm leading-6 opacity-70 mt-3">煮物だけじゃない。スイーツ、パスタ、唐揚げまで。アイデア次第で無限に変身するのが魅力。</p>
+        <div class="relative mt-6 flex gap-2">
+          <span class="text-[11px] bg-white border border-black/5 px-3 py-1 rounded-full">スイーツ</span>
+          <span class="text-[11px] bg-white border border-black/5 px-3 py-1 rounded-full">アレンジ無限</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH 5 -->
+<section id="approach" class="py-20 lg:py-28 bg-cream relative overflow-hidden">
+  <div class="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-konnyaku/10 to-transparent"></div>
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="text-center max-w-[720px] mx-auto">
+      <span class="inline-flex items-center gap-2 bg-white border border-black/5 rounded-full px-4 py-2 text-xs font-bold shadow-sm reveal">
+        <span class="w-2 h-2 bg-amber rounded-full animate-pulse"></span> OUR 5 APPROACHES
+      </span>
+      <h2 class="font-maru font-black text-[30px] lg:text-[42px] leading-[1.15] mt-4 reveal">5つのアプローチで、<br>こんにゃくの<span class="relative inline-block px-2"><span class="relative z-10">可能性</span><span class="absolute bottom-2 inset-x-0 h-3 bg-amber/30 -rotate-1"></span></span>を探る。</h2>
+      <p class="text-sm leading-7 opacity-60 mt-4 reveal">まだ計画段階。でも、だからこそ自由な発想で。私たちが考えた5つの切り口です。</p>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+      <!-- 01 -->
+      <div class="group relative bg-white rounded-[28px] p-7 border border-black/5 hover:shadow-[0_20px_48px_rgba(45,74,62,0.12)] hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-amber/5 rounded-full blur-2xl group-hover:bg-amber/10 transition"></div>
+        <div class="flex items-start justify-between">
+          <div class="w-12 h-12 rounded-2xl bg-cream border border-black/5 flex items-center justify-center text-lg group-hover:scale-110 group-hover:rotate-3 transition duration-500">🔬</div>
+          <span class="font-outfit font-black text-5xl text-black/[0.04] group-hover:text-amber/20 transition">01</span>
+        </div>
+        <p class="font-outfit text-[11px] tracking-[0.2em] text-amber font-bold mt-6">RESEARCH</p>
+        <h3 class="font-maru font-black text-[18px] leading-tight mt-1">こんにゃくの成分を調べる</h3>
+        <p class="text-sm leading-6 opacity-60 mt-3">人体への良い影響・メリットを徹底リサーチ。グルコマンナンの働きや健康効果を、根拠を持って伝えられるように。</p>
+        <div class="mt-6 flex items-center gap-2 text-xs font-bold">
+          <span class="px-3 py-1.5 bg-cream rounded-full border border-black/5">成分分析</span>
+          <span class="px-3 py-1.5 bg-cream rounded-full border border-black/5">健康</span>
+          <span class="ml-auto w-8 h-8 rounded-full bg-konnyaku text-cream flex items-center justify-center group-hover:translate-x-1 transition">→</span>
+        </div>
+        <div class="absolute bottom-0 left-7 right-7 h-[3px] bg-amber scale-x-0 group-hover:scale-x-100 transition duration-500 origin-left"></div>
+      </div>
+      <!-- 02 -->
+      <div class="group relative bg-white rounded-[28px] p-7 border border-black/5 hover:shadow-[0_20px_48px_rgba(45,74,62,0.12)] hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-moss/5 rounded-full blur-2xl group-hover:bg-moss/10 transition"></div>
+        <div class="flex items-start justify-between">
+          <div class="w-12 h-12 rounded-2xl bg-amber flex items-center justify-center text-lg group-hover:scale-110 group-hover:rotate-3 transition duration-500">🍰</div>
+          <span class="font-outfit font-black text-5xl text-black/[0.04] group-hover:text-amber/20 transition">02</span>
+        </div>
+        <p class="font-outfit text-[11px] tracking-[0.2em] text-amber font-bold mt-6">SWEETS</p>
+        <h3 class="font-maru font-black text-[18px] leading-tight mt-1">こんにゃくスイーツを考える</h3>
+        <p class="text-sm leading-6 opacity-60 mt-3">若い世代にも刺さる、新しいスイーツを開発。こんにゃくゼリー、わらび餅風、パフェ…妄想は無限大。</p>
+        <div class="mt-6 flex items-center gap-2 text-xs font-bold">
+          <span class="px-3 py-1.5 bg-cream rounded-full border border-black/5">スイーツ</span>
+          <span class="px-3 py-1.5 bg-cream rounded-full border border-black/5">Z世代向け</span>
+          <span class="ml-auto w-8 h-8 rounded-full bg-konnyaku text-cream flex items-center justify-center group-hover:translate-x-1 transition">→</span>
+        </div>
+        <div class="absolute bottom-0 left-7 right-7 h-[3px] bg-amber scale-x-0 group-hover:scale-x-100 transition duration-500 origin-left"></div>
+      </div>
+      <!-- 03 -->
+      <div class="group relative bg-white rounded-[28px] p-7 border border-black/5 hover:shadow-[0_20px_48px_rgba(45,74,62,0.12)] hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-konnyaku/5 rounded-full blur-2xl"></div>
+        <div class="flex items-start justify-between">
+          <div class="w-12 h-12 rounded-2xl bg-cream border border-black/5 flex items-center justify-center text-lg group-hover:scale-110 group-hover:rotate-3 transition duration-500">♨️</div>
+          <span class="font-outfit font-black text-5xl text-black/[0.04] group-hover:text-amber/20 transition">03</span>
+        </div>
+        <p class="font-outfit text-[11px] tracking-[0.2em] text-amber font-bold mt-6">PROCESSING</p>
+        <h3 class="font-maru font-black text-[18px] leading-tight mt-1">様々な加工方法を調べる</h3>
+        <p class="text-sm leading-6 opacity-60 mt-3">板こんにゃく、しらたき、刺身こんにゃく…加工で変わる食感と用途。伝統と最新技術を学ぶ。</p>
+        <div class="mt-6 flex items-center gap-2 text-xs font-bold">
+          <span class="px-3 py-1.5 bg-cream rounded-full border border-black/5">加工</span>
+          <span class="px-3 py-1.5 bg-cream rounded-full border border-black/5">伝統</span>
+          <span class="ml-auto w-8 h-8 rounded-full bg-konnyaku text-cream flex items-center justify-center group-hover:translate-x-1 transition">→</span>
+        </div>
+        <div class="absolute bottom-0 left-7 right-7 h-[3px] bg-amber scale-x-0 group-hover:scale-x-100 transition duration-500 origin-left"></div>
+      </div>
+      <!-- 04 -->
+      <div class="group relative bg-konnyaku text-cream rounded-[28px] p-7 hover:shadow-[0_20px_48px_rgba(45,74,62,0.2)] hover:-translate-y-2 transition-all duration-500 overflow-hidden md:col-span-2 lg:col-span-1">
+        <div class="absolute -top-10 -right-10 w-40 h-40 bg-amber/15 rounded-full blur-2xl"></div>
+        <div class="flex items-start justify-between">
+          <div class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur flex items-center justify-center text-lg group-hover:scale-110 group-hover:rotate-3 transition duration-500">🤝</div>
+          <span class="font-outfit font-black text-5xl text-white/10">04</span>
+        </div>
+        <p class="font-outfit text-[11px] tracking-[0.2em] text-amber font-bold mt-6">COLLABORATION</p>
+        <h3 class="font-maru font-black text-[18px] leading-tight mt-1 text-cream">協力してくれそうな企業・お店を調べる</h3>
+        <p class="text-sm leading-6 opacity-70 mt-3">地元のこんにゃく屋さん、カフェ、道の駅…実際に連絡を取り、協力をお願いしてみる。リアルな連携へ。</p>
+        <div class="mt-6 flex items-center gap-2 text-xs font-bold">
+          <span class="px-3 py-1.5 bg-white/10 rounded-full border border-white/10">企業連携</span>
+          <span class="px-3 py-1.5 bg-amber text-moss rounded-full">挑戦中</span>
+          <span class="ml-auto w-8 h-8 rounded-full bg-white text-konnyaku flex items-center justify-center group-hover:translate-x-1 transition">→</span>
+        </div>
+      </div>
+      <!-- 05 - wide -->
+      <div class="group relative bg-white rounded-[28px] p-7 border border-black/5 hover:shadow-[0_20px_48px_rgba(45,74,62,0.12)] hover:-translate-y-2 transition-all duration-500 overflow-hidden md:col-span-2 lg:col-span-2">
+        <div class="absolute inset-0 bg-gradient-to-br from-amber/5 via-transparent to-konnyaku/5 opacity-0 group-hover:opacity-100 transition duration-700"></div>
+        <div class="relative flex flex-col sm:flex-row gap-6">
+          <div class="flex-1">
+            <div class="flex items-start justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-konnyaku text-cream flex items-center justify-center text-lg group-hover:scale-110 group-hover:rotate-3 transition duration-500">📣</div>
+              <span class="font-outfit font-black text-5xl text-black/[0.04] group-hover:text-amber/20 transition">05</span>
+            </div>
+            <p class="font-outfit text-[11px] tracking-[0.2em] text-amber font-bold mt-6">PROMOTION</p>
+            <h3 class="font-maru font-black text-[18px] leading-tight mt-1">こんにゃくの良さをどう伝えるか考える</h3>
+            <p class="text-sm leading-6 opacity-60 mt-3">SNS、パッケージ、イベント…「伝わる」工夫を考える。私たち高校生だからこそできる発信方法を。</p>
+            <div class="mt-6 flex flex-wrap gap-2 text-xs font-bold">
+              <span class="px-3 py-1.5 bg-cream rounded-full border border-black/5">SNS</span>
+              <span class="px-3 py-1.5 bg-cream rounded-full border border-black/5">デザイン</span>
+              <span class="px-3 py-1.5 bg-cream rounded-full border border-black/5">発信</span>
+              <span class="px-3 py-1.5 bg-amber rounded-full">最重要</span>
+            </div>
+          </div>
+          <div class="sm:w-[240px] bg-cream rounded-2xl p-5 border border-black/5 flex flex-col justify-center">
+            <p class="font-outfit text-[11px] tracking-widest opacity-40">IDEA EXAMPLE</p>
+            <p class="font-maru font-bold text-sm mt-2 leading-relaxed">「こんにゃくって、<br>こんなに可愛いんだ」</p>
+            <div class="mt-4 flex gap-2">
+              <span class="w-8 h-8 rounded-full bg-white border flex items-center justify-center text-xs">IG</span>
+              <span class="w-8 h-8 rounded-full bg-white border flex items-center justify-center text-xs">TK</span>
+              <span class="w-8 h-8 rounded-full bg-white border flex items-center justify-center text-xs">YT</span>
+            </div>
+            <p class="text-[11px] opacity-50 mt-3">高校生ならではの視点で</p>
+          </div>
+        </div>
+        <div class="absolute bottom-0 left-7 right-7 h-[3px] bg-amber scale-x-0 group-hover:scale-x-100 transition duration-500 origin-left"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE CYCLE -->
+<section id="future" class="py-20 lg:py-28 bg-moss text-cream relative overflow-hidden">
+  <div class="absolute inset-0">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-amber/5 rounded-full blur-[80px] -translate-y-1/2"></div>
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(white 1px, transparent 1px); background-size: 28px 28px;"></div>
+  </div>
+  <div class="relative max-w-[1280px] mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <div class="reveal">
+        <p class="font-outfit text-xs tracking-[0.25em] text-amber font-bold">EXPECTED RESULT</p>
+        <h2 class="font-maru font-black text-[28px] lg:text-[38px] leading-tight mt-3">
+          こんにゃくの<br>
+          <span class="text-amber">新しい食べ方</span>を<br>
+          提案する。
+        </h2>
+        <p class="mt-6 text-sm leading-7 opacity-70">
+          私たちの活動が、ひとつの提案になる。<br>
+          <span class="text-cream font-bold">「こんにゃくって、こんな食べ方があったんだ」</span><br>
+          そう思ってもらえたら、群馬とこんにゃくへの興味が広がる。<br>
+          知ってもらうことが、盛り上がることにつながる。
+        </p>
+        <div class="mt-8 inline-flex items-center gap-3 bg-white/10 backdrop-blur border border-white/10 rounded-full px-5 py-3">
+          <span class="w-8 h-8 rounded-full bg-amber text-moss flex items-center justify-center text-sm">♥</span>
+          <div class="text-left leading-none">
+            <p class="text-xs font-bold">懸念への対策も考えています</p>
+            <p class="text-[11px] opacity-60">無理なく続けられる提案を</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- cycle diagram -->
+      <div class="relative reveal">
+        <div class="bg-white text-konnyaku rounded-[32px] p-8 lg:p-10 shadow-[0_24px_64px_rgba(0,0,0,0.2)]">
+          <p class="font-outfit text-[11px] tracking-[0.2em] opacity-40 text-center">VIRTUOUS CYCLE / 私たちが目指す循環</p>
+          <div class="mt-8 relative">
+            <!-- center -->
+            <div class="mx-auto w-[140px] h-[140px] rounded-full bg-cream border-4 border-amber flex flex-col items-center justify-center relative z-10">
+              <span class="text-2xl">🍢</span>
+              <p class="font-maru font-black text-xs mt-1">こんにゃく</p>
+              <p class="font-outfit text-[9px] tracking-widest opacity-50">KONNYAKU</p>
+            </div>
+            <!-- orbit items -->
+            <div class="absolute inset-0">
+              <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 bg-konnyaku text-cream px-4 py-2 rounded-full text-xs font-bold shadow-lg">新しい食べ方</div>
+              <div class="absolute top-1/2 -right-2 -translate-y-1/2 bg-amber text-moss px-3 py-2 rounded-full text-xs font-bold shadow-lg rotate-[-2deg]">知ってもらう</div>
+              <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-2 bg-white border border-black/10 px-4 py-2 rounded-full text-xs font-bold shadow-lg">群馬が盛り上がる</div>
+              <div class="absolute top-1/2 -left-2 -translate-y-1/2 bg-cream border border-black/5 px-3 py-2 rounded-full text-xs font-bold shadow-lg rotate-[2deg]">需要が生まれる</div>
+            </div>
+            <!-- arrows -->
+            <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" viewBox="0 0 300 300" fill="none">
+              <path d="M150 40 A110 110 0 0 1 260 150" stroke="#2D4A3E" stroke-width="1.5" stroke-dasharray="6 6" marker-end="url(#arrow)"/>
+              <path d="M260 150 A110 110 0 0 1 150 260" stroke="#2D4A3E" stroke-width="1.5" stroke-dasharray="6 6"/>
+              <path d="M150 260 A110 110 0 0 1 40 150" stroke="#2D4A3E" stroke-width="1.5" stroke-dasharray="6 6"/>
+              <path d="M40 150 A110 110 0 0 1 150 40" stroke="#2D4A3E" stroke-width="1.5" stroke-dasharray="6 6"/>
+              <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2D4A3E"/></marker></defs>
+            </svg>
+            <div class="absolute inset-0 rounded-full border border-dashed border-black/10 pointer-events-none"></div>
+          </div>
+          <div class="mt-10 grid grid-cols-3 gap-3 text-center">
+            <div class="bg-cream rounded-2xl py-3">
+              <p class="font-black text-sm">農家支援</p>
+              <p class="text-[11px] opacity-60">間接的に</p>
+            </div>
+            <div class="bg-amber rounded-2xl py-3">
+              <p class="font-black text-sm text-moss">地域活性</p>
+              <p class="text-[11px] opacity-70 text-moss">群馬が元気に</p>
+            </div>
+            <div class="bg-konnyaku text-cream rounded-2xl py-3">
+              <p class="font-black text-sm">継続</p>
+              <p class="text-[11px] opacity-70">未来へ</p>
+            </div>
+          </div>
+          <p class="text-center text-[11px] opacity-40 mt-4">※ 私たちの挑戦は、この循環の最初の一歩</p>
+        </div>
+        <!-- floating -->
+        <div class="absolute -top-4 -right-4 bg-amber text-moss rounded-2xl px-4 py-2 shadow-xl rotate-[3deg] hidden lg:flex items-center gap-2">
+          <span class="w-2 h-2 bg-moss rounded-full animate-pulse"></span>
+          <span class="text-xs font-bold">群馬をもっと好きになる</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOG -->
+<section id="log" class="py-20 lg:py-28 bg-cream">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div class="reveal">
+        <p class="font-outfit text-xs tracking-[0.25em] text-amber font-bold">ACTIVITY LOG</p>
+        <h2 class="font-maru font-black text-[28px] lg:text-[36px] mt-2">活動記録</h2>
+        <p class="text-sm opacity-60 mt-2">これから、ここに私たちの足跡を残していきます。</p>
+      </div>
+      <div class="flex items-center gap-3 reveal">
+        <span class="hidden sm:inline text-xs opacity-60">全3件 / 計画中</span>
+        <span class="inline-flex items-center gap-2 bg-white border border-black/5 rounded-full px-4 py-2 text-xs font-bold"><span class="w-2 h-2 bg-amber rounded-full animate-pulse"></span> Coming Soon</span>
+      </div>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-3 gap-6 stagger">
+      <!-- placeholder 1 -->
+      <div class="group bg-white rounded-[28px] overflow-hidden border border-black/5 hover:shadow-[0_16px_40px_rgba(45,74,62,0.08)] hover:-translate-y-1 transition-all duration-500">
+        <div class="h-48 bg-cream relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-konnyaku/5 to-amber/5"></div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <div class="w-16 h-16 rounded-2xl bg-white border border-black/5 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:rotate-3 transition duration-500">📝</div>
+            <p class="font-outfit text-[11px] tracking-[0.2em] opacity-40 mt-3">PHASE 01</p>
+            <p class="font-maru font-bold text-sm mt-1">近日公開</p>
+          </div>
+          <div class="absolute top-4 left-4 bg-amber text-moss text-[11px] font-bold px-3 py-1 rounded-full">予定</div>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-konnyaku/5 transition"></div>
+        </div>
+        <div class="p-6">
+          <p class="font-outfit text-[11px] tracking-widest opacity-40">2026.09 —</p>
+          <h3 class="font-maru font-bold text-[16px] mt-1">こんにゃくの成分を調べる</h3>
+          <p class="text-xs leading-5 opacity-60 mt-2">グルコマンナンの効果や健康メリットを文献・ネットで調査。分かりやすくまとめて発信予定。</p>
+          <div class="mt-4 flex items-center gap-2">
+            <span class="text-[11px] bg-cream px-2.5 py-1 rounded-full border">調査</span>
+            <span class="text-[11px] opacity-40">→ レポート作成中</span>
+          </div>
+        </div>
+      </div>
+      <!-- placeholder 2 -->
+      <div class="group bg-white rounded-[28px] overflow-hidden border border-black/5 hover:shadow-[0_16px_40px_rgba(45,74,62,0.08)] hover:-translate-y-1 transition-all duration-500">
+        <div class="h-48 bg-cream relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-amber/5 to-konnyaku/5"></div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <div class="w-16 h-16 rounded-2xl bg-white border border-black/5 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:rotate-3 transition duration-500">🍰</div>
+            <p class="font-outfit text-[11px] tracking-[0.2em] opacity-40 mt-3">PHASE 02</p>
+            <p class="font-maru font-bold text-sm mt-1">近日公開</p>
+          </div>
+          <div class="absolute top-4 left-4 bg-white border text-[11px] font-bold px-3 py-1 rounded-full">準備中</div>
+        </div>
+        <div class="p-6">
+          <p class="font-outfit text-[11px] tracking-widest opacity-40">2026.10 —</p>
+          <h3 class="font-maru font-bold text-[16px] mt-1">スイーツ試作に挑戦</h3>
+          <p class="text-xs leading-5 opacity-60 mt-2">こんにゃくを使ったスイーツのアイデア出しと試作。文化祭での発表に向けて。</p>
+          <div class="mt-4 flex items-center gap-2">
+            <span class="text-[11px] bg-cream px-2.5 py-1 rounded-full border">試作</span>
+            <span class="text-[11px] opacity-40">→ アイデア募集中</span>
+          </div>
+        </div>
+      </div>
+      <!-- placeholder 3 -->
+      <div class="group bg-white rounded-[28px] overflow-hidden border border-black/5 hover:shadow-[0_16px_40px_rgba(45,74,62,0.08)] hover:-translate-y-1 transition-all duration-500">
+        <div class="h-48 bg-cream relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-konnyaku/5 to-moss/5"></div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <div class="w-16 h-16 rounded-2xl bg-white border border-black/5 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:rotate-3 transition duration-500">🤝</div>
+            <p class="font-outfit text-[11px] tracking-[0.2em] opacity-40 mt-3">PHASE 03</p>
+            <p class="font-maru font-bold text-sm mt-1">近日公開</p>
+          </div>
+          <div class="absolute top-4 left-4 bg-konnyaku text-cream text-[11px] font-bold px-3 py-1 rounded-full">計画中</div>
+        </div>
+        <div class="p-6">
+          <p class="font-outfit text-[11px] tracking-widest opacity-40">2026.11 —</p>
+          <h3 class="font-maru font-bold text-[16px] mt-1">企業・お店へのアプローチ</h3>
+          <p class="text-xs leading-5 opacity-60 mt-2">協力してくれそうな企業やお店をリストアップ。実際にお話を聞きに行きます。</p>
+          <div class="mt-4 flex items-center gap-2">
+            <span class="text-[11px] bg-cream px-2.5 py-1 rounded-full border">連携</span>
+            <span class="text-[11px] opacity-40">→ 連絡準備中</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 bg-white border border-dashed border-black/15 rounded-[24px] p-6 flex flex-col sm:flex-row items-center justify-between gap-4 reveal">
+      <div class="flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-cream flex items-center justify-center">✎</div>
+        <div>
+          <p class="font-bold text-sm">活動の更新方法</p>
+          <p class="text-xs opacity-60">このカードをコピーして、日付・写真・本文を書き換えるだけで追加できます。</p>
+        </div>
+      </div>
+      <span class="text-xs bg-cream px-4 py-2 rounded-full border font-medium whitespace-nowrap">HTMLを編集するだけ</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="py-16 bg-white border-y border-black/5">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="bg-cream rounded-[32px] p-8 lg:p-10 border border-black/5 flex flex-col lg:flex-row gap-8 items-center reveal">
+      <div class="w-20 h-20 lg:w-24 lg:h-24 rounded-[24px] bg-konnyaku flex items-center justify-center text-cream font-maru font-black text-2xl shrink-0">樹徳</div>
+      <div class="flex-1 text-center lg:text-left">
+        <p class="font-outfit text-xs tracking-[0.2em] opacity-40">ABOUT US</p>
+        <h3 class="font-maru font-black text-xl mt-1">樹徳高等学校 2SS1班</h3>
+        <p class="text-sm leading-6 opacity-70 mt-3 max-w-[640px]">私たちは、群馬をもっと盛り上げたいという想いで集まった探究班です。まだ始まったばかりですが、こんにゃくという身近な食材から、地域の未来を考える活動を進めています。応援よろしくお願いします！</p>
+      </div>
+      <div class="flex flex-col gap-3 shrink-0 w-full sm:w-auto">
+        <div class="bg-white rounded-2xl px-6 py-4 border border-black/5 text-center">
+          <p class="font-outfit text-[11px] tracking-widest opacity-40">THEME</p>
+          <p class="font-bold text-sm mt-1">こんにゃくで群馬を盛り上げる</p>
+        </div>
+        <div class="bg-konnyaku text-cream rounded-2xl px-6 py-4 text-center">
+          <p class="font-outfit text-[11px] tracking-widest opacity-60">STATUS</p>
+          <p class="font-bold text-sm mt-1">探究活動 進行中</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 bg-cream">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="bg-moss rounded-[32px] p-8 lg:p-12 text-cream relative overflow-hidden text-center reveal">
+      <div class="absolute inset-0 bg-gradient-to-br from-amber/10 via-transparent to-transparent"></div>
+      <div class="absolute -top-20 -right-20 w-[400px] h-[400px] bg-amber/10 rounded-full blur-3xl"></div>
+      <p class="relative font-outfit text-xs tracking-[0.3em] opacity-60">FOLLOW OUR JOURNEY</p>
+      <h2 class="relative font-maru font-black text-[24px] lg:text-[32px] leading-tight mt-3">私たちの挑戦は、<br>まだ始まったばかり。</h2>
+      <p class="relative text-sm opacity-70 mt-4 max-w-[560px] mx-auto leading-7">このサイトは、活動とともに更新されていきます。次は「こんにゃくの成分調査」から。ぜひまた見に来てください。</p>
+      <div class="relative mt-8 flex flex-wrap justify-center gap-3">
+        <a href="#approach" class="inline-flex items-center gap-2 bg-amber text-moss px-7 py-4 rounded-full font-black text-sm hover:bg-white transition">5つの計画をもう一度見る</a>
+        <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;" class="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/15 px-7 py-4 rounded-full font-bold text-sm hover:bg-white hover:text-moss transition">トップに戻る ↑</a>
+      </div>
+      <p class="relative font-outfit text-[11px] tracking-widest opacity-30 mt-8">© 2026 JUTOKU 2SS1 — GUNMA KONNYAKU PROJECT</p>
+    </div>
+  </div>
+</section>
+
+<footer class="py-8 bg-cream border-t border-black/5">
+  <div class="max-w-[1280px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs opacity-60">
+    <p class="font-maru font-bold">樹徳高等学校 2SS1班 <span class="font-sans font-normal opacity-60">| こんにゃくで群馬を盛り上げるプロジェクト</span></p>
+    <p class="font-outfit">Made with ♥ for Gunma — 2026</p>
+  </div>
+</footer>
+
+<script>
+// lenis smooth scroll
+const lenis = new Lenis({ autoRaf: true, lerp: 0.08 });
+gsap.registerPlugin(ScrollTrigger);
+// progress
+lenis.on('scroll', () => {
+  const progress = lenis.progress;
+  document.getElementById('progress').style.width = (progress*100)+'%';
+  const header = document.getElementById('header');
+  if (lenis.scroll > 40) header.querySelector('div > div').classList.add('shadow-[0_8px_32px_rgba(45,74,62,0.12)]','bg-cream/90');
+  else header.querySelector('div > div').classList.remove('shadow-[0_8px_32px_rgba(45,74,62,0.12)]','bg-cream/90');
+});
+// loader
+let pct = 0;
+const bar = document.getElementById('loader-bar');
+const pctEl = document.getElementById('loader-pct');
+const loader = document.getElementById('loader');
+const iv = setInterval(()=>{
+  pct += Math.random()*18;
+  if(pct>100) pct=100;
+  bar.style.width = pct+'%';
+  pctEl.textContent = Math.floor(pct)+'%';
+  if(pct>=100){
+    clearInterval(iv);
+    setTimeout(()=>{
+      loader.classList.add('hidden-loader');
+      initAnimations();
+    }, 400);
+  }
+}, 90);
+setTimeout(()=>{ if(!loader.classList.contains('hidden-loader')){ clearInterval(iv); bar.style.width='100%'; pctEl.textContent='100%'; loader.classList.add('hidden-loader'); initAnimations(); } }, 2600);
+
+// reveal
+function initAnimations(){
+  // generic reveal
+  gsap.utils.toArray('.reveal').forEach(el=>{
+    gsap.fromTo(el, {y:28, opacity:0}, {
+      y:0, opacity:1, duration:0.9, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 88%', once:true }
+    });
+  });
+  gsap.utils.toArray('.stagger').forEach(container=>{
+    gsap.fromTo(container.children, {y:20, opacity:0}, {
+      y:0, opacity:1, duration:0.7, ease:'power3.out', stagger:0.08,
+      scrollTrigger:{ trigger:container, start:'top 85%', once:true }
+    });
+  });
+  // counter
+  gsap.utils.toArray('.counter').forEach(el=>{
+    const target = parseInt(el.dataset.target);
+    let obj = {val:0};
+    gsap.to(obj, {val:target, duration:1.4, ease:'power2.out', onUpdate:()=> el.textContent=Math.floor(obj.val),
+      scrollTrigger:{ trigger:el, start:'top 90%', once:true }
+    });
+  });
+  // hero parallax blobs
+  gsap.to('.hero-blob', { yPercent: -10, scrollTrigger:{ trigger:'body', start:'top top', end:'bottom top', scrub:1 } });
+}
+// magnetic buttons
+document.querySelectorAll('.magnetic').forEach(btn=>{
+  btn.addEventListener('mousemove', e=>{
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width/2;
+    const y = e.clientY - rect.top - rect.height/2;
+    btn.style.transform = `translate(${x*0.15}px, ${y*0.25}px)`;
+  });
+  btn.addEventListener('mouseleave', ()=> btn.style.transform='translate(0,0)');
+});
+// mobile menu
+document.getElementById('menuBtn').addEventListener('click', ()=>{
+  document.getElementById('mobileNav').classList.toggle('hidden');
+});
+document.querySelectorAll('#mobileNav a').forEach(a=> a.addEventListener('click', ()=> document.getElementById('mobileNav').classList.add('hidden')));
+// smooth anchor with lenis
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const href = a.getAttribute('href');
+    if(href.length>1){
+      const target = document.querySelector(href);
+      if(target){
+        e.preventDefault();
+        lenis.scrollTo(target, { offset: -80 });
+        if(window.innerWidth<768) document.getElementById('mobileNav').classList.add('hidden');
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>
