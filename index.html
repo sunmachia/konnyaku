@@ -117,257 +117,196 @@ html { scroll-behavior: smooth; }
 
 <!-- ========== パネル：商品紹介（デフォルト表示） ========== -->
 <div id="panel-product" role="tabpanel" aria-labelledby="tab-product-btn">
-  <!-- 商品ヒーロー：高級レストラン風 ダーク + ゴールド -->
-  <section class="relative bg-dark text-white overflow-hidden">
-    <div class="absolute inset-0">
-      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-dark to-dark"></div>
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-gold/10 rounded-full blur-[120px] -translate-y-1/2"></div>
-      <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(#C9A86A 1px, transparent 1px); background-size: 28px 28px;"></div>
+  <!-- 商品ヒーロー：洗練・余白・タイポグラフィで魅せる -->
+  <section class="relative bg-[#0E1412] text-white overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0E1412] via-[#0E1412] to-[#0E1412]"></div>
+      <div class="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-white/[0.03] rounded-full blur-[80px]"></div>
     </div>
-    <div class="relative max-w-[1120px] mx-auto px-5 sm:px-6 py-12 lg:py-20">
-      <div class="grid lg:grid-cols-2 gap-10 items-center min-h-[520px]">
+    <div class="relative max-w-[1120px] mx-auto px-5 sm:px-6 py-14 lg:py-24">
+      <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
         <div>
-          <p class="reveal inline-flex items-center gap-2 text-gold text-xs tracking-[0.2em] font-bold border border-gold/30 rounded-full px-4 py-1.5 bg-gold/10">GUNMA KONNYAKU ATELIER — PROPOSAL 2026</p>
-          <h1 class="font-serif font-bold leading-[0.95] mt-6">
-            <span class="block text-[13px] tracking-[0.2em] text-gold/70 font-sans font-bold mb-3 reveal" style="--delay:0.05s">KONNYAKU, BEYOND CUISINE</span>
-            <span class="text-reveal block text-[36px] sm:text-[48px] lg:text-[54px] font-light" style="--delay:0.1s"><span>こんにゃくが、</span></span>
-            <span class="text-reveal block text-[36px] sm:text-[48px] lg:text-[54px] font-light" style="--delay:0.18s"><span>料理を<span class="font-bold text-gold">超える</span>瞬間。</span></span>
+          <p class="reveal inline-flex items-center gap-3 text-white/60 text-[11px] tracking-[0.18em] font-bold" style="--delay:0s">
+            <span class="w-8 h-[1px] bg-gold"></span> GUNMA KONNYAKU ATELIER — PROPOSAL 2026 <span class="hidden sm:inline text-white/30">/ 樹徳高等学校 2SS1班</span>
+          </p>
+          <h1 class="font-serif font-light leading-[0.95] mt-7">
+            <span class="block text-[12px] tracking-[0.2em] text-white/40 font-sans font-bold mb-4 reveal" style="--delay:0.05s">KONNYAKU, BEYOND CUISINE</span>
+            <span class="text-reveal block text-[36px] sm:text-[46px] lg:text-[52px] font-light" style="--delay:0.1s"><span>こんにゃくが、</span></span>
+            <span class="text-reveal block text-[36px] sm:text-[46px] lg:text-[52px] font-light" style="--delay:0.18s"><span>料理を<span class="font-serif font-bold text-goldLight">超える</span>瞬間。</span></span>
           </h1>
-          <p class="reveal mt-6 text-sm leading-7 text-white/70 max-w-[520px]" style="--delay:0.28s">
-            群馬の誇り、こんにゃく芋から生まれた新しいデザート。<br>
-            低カロリー、食物繊維、そして絹のような口どけ。<br>
-            <span class="text-goldLight font-bold">高級レストランのデセール</span>として、群馬の価値を世界へ。
+          <div class="reveal mt-6 w-12 h-[1px] bg-gold/60" style="--delay:0.24s"></div>
+          <p class="reveal mt-6 text-[14px] leading-[1.9] text-white/65 max-w-[520px] font-light" style="--delay:0.28s">
+            群馬の誇り、こんにゃく芋から生まれたデザート。<br>
+            絹のような口どけ、低カロリー、食物繊維。<br>
+            一口が、群馬の風土を語る。
           </p>
           <div class="reveal mt-8 flex flex-wrap gap-3" style="--delay:0.36s">
-            <a href="#product-lineup" class="inline-flex items-center gap-2 bg-gold text-dark px-7 py-3.5 rounded-full text-sm font-bold hover:bg-goldLight transition">企画書を見る <span>→</span></a>
-            <button data-tab-target="project" class="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-white px-6 py-3.5 rounded-full text-sm font-bold hover:bg-white hover:text-dark transition">私たちの想い →</button>
+            <a href="#product-detail" class="inline-flex items-center gap-3 bg-white text-dark px-7 py-3 rounded-full text-sm font-bold hover:bg-goldLight transition">詳細を見る <span class="text-xs">→</span></a>
+            <button data-tab-target="project" class="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm font-medium transition">私たちの探究を見る <span aria-hidden="true">→</span></button>
           </div>
-          <div class="reveal mt-10 flex items-center gap-6 text-xs text-white/50" style="--delay:0.44s">
-            <span class="flex items-center gap-2"><span class="w-6 h-[1px] bg-gold"></span> 樹徳高等学校 2SS1班 企画</span>
-            <span class="hidden sm:inline">フェーズ0 コンセプト提案</span>
+          <div class="reveal mt-10 flex items-center gap-4 text-[11px] tracking-[0.1em] text-white/35" style="--delay:0.44s">
+            <span>群馬県産 100%</span>
+            <span class="w-[1px] h-3 bg-white/15"></span>
+            <span>フェーズ0 コンセプト</span>
           </div>
         </div>
-        <!-- ヒーロービジュアル：高級感のあるカード -->
-        <div class="reveal-scale relative" style="--delay:0.2s">
-          <div class="relative bg-[#1A2520] rounded-[32px] border border-gold/20 p-5 sm:p-6 shadow-[0_32px_80px_rgba(0,0,0,0.4)]">
-            <div class="flex items-center justify-between text-xs">
-              <span class="tracking-[0.14em] text-gold font-bold">SIGNATURE — 01</span>
-              <span class="bg-gold text-dark px-3 py-1 rounded-full font-bold">群馬県産 100%</span>
-            </div>
-            <div class="mt-5 aspect-[4/3] rounded-2xl overflow-hidden relative bg-gradient-to-br from-[#2A3A32] via-[#1E2E28] to-[#0F1A17] border border-gold/10">
-              <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                <div class="w-28 h-28 rounded-full bg-gradient-to-br from-goldLight via-gold to-[#8C6A2A] flex items-center justify-center shadow-[0_12px_32px_rgba(201,168,106,0.3)]">
-                  <span class="text-4xl">🍮</span>
+        <!-- ヒーロービジュアル：洗練された1枚 -->
+        <div class="reveal-scale" style="--delay:0.2s">
+          <div class="relative">
+            <div class="aspect-[4/3] bg-[#1A2120] border border-white/10 p-[1px]">
+              <div class="w-full h-full bg-[#F4F1EB] flex flex-col items-center justify-center p-10 text-center">
+                <p class="font-garamond text-[11px] tracking-[0.3em] text-dark/40">SIGNATURE</p>
+                <div class="mt-6 w-full max-w-[320px] aspect-[3/2] bg-white border border-dark/10 flex flex-col items-center justify-center">
+                  <p class="font-serif text-dark text-[11px] tracking-[0.2em]">PHOTO</p>
+                  <p class="font-serif text-lg text-dark mt-2">絹こんにゃくのブランマンジェ</p>
+                  <p class="font-garamond text-xs tracking-[0.2em] text-dark/40 mt-1">KINU BLANCMANGE</p>
                 </div>
-                <p class="font-serif text-xl text-goldLight mt-5">絹こんにゃくの<br>ブランマンジェ</p>
-                <p class="text-xs tracking-[0.14em] text-gold/60 mt-1">KINU BLANCMANGE</p>
-                <div class="mt-4 flex gap-2">
-                  <span class="text-[11px] bg-white/10 border border-white/10 text-goldLight px-2.5 py-1 rounded-full">食物繊維</span>
-                  <span class="text-[11px] bg-gold text-dark px-2.5 py-1 rounded-full font-bold">低カロリー</span>
-                </div>
-              </div>
-              <div class="absolute top-4 left-4 bg-dark/80 backdrop-blur border border-gold/20 rounded-full px-3 py-1.5 flex items-center gap-2">
-                <span class="w-2 h-2 bg-gold rounded-full animate-pulse"></span>
-                <span class="text-xs font-bold text-goldLight">シェフ監修コンセプト</span>
+                <p class="font-garamond text-[11px] tracking-[0.14em] text-dark/30 mt-6">群馬の絹 — 低カロリー・食物繊維</p>
               </div>
             </div>
-            <div class="mt-5 grid grid-cols-3 gap-3 text-center">
-              <div class="bg-white/5 border border-white/10 rounded-xl py-3">
-                <p class="text-gold font-serif text-lg leading-none">5<span class="text-xs">kcal</span></p>
-                <p class="text-[10px] text-white/50 mt-1">100gあたり</p>
-              </div>
-              <div class="bg-white/5 border border-white/10 rounded-xl py-3">
-                <p class="text-gold font-serif text-lg leading-none">90<span class="text-xs">%</span></p>
-                <p class="text-[10px] text-white/50 mt-1">群馬シェア</p>
-              </div>
-              <div class="bg-gold text-dark rounded-xl py-3">
-                <p class="font-bold text-sm leading-none">群馬</p>
-                <p class="text-[10px] opacity-70">誇りを味わう</p>
-              </div>
+            <div class="absolute -bottom-4 -right-4 hidden lg:block bg-dark border border-white/10 px-4 py-3">
+              <p class="font-garamond text-xs tracking-[0.14em] text-gold">01 / 01</p>
+              <p class="font-serif text-xs text-white/70 mt-1">唯一の一品に、すべてを込める</p>
             </div>
           </div>
-          <p class="text-xs text-white/30 mt-3 text-center">※ 写真はコンセプトイメージ。今後試作写真に差し替え</p>
+          <p class="text-[11px] tracking-[0.1em] text-white/25 mt-8 text-center font-light">写真は今後、試作写真に差し替え — 群馬県産こんにゃく芋使用</p>
         </div>
-      </div>
-      <div class="mt-10 flex justify-center">
-        <a href="#product-concept" class="reveal inline-flex flex-col items-center gap-2 text-gold/50 hover:text-gold transition" style="--delay:0.6s">
-          <span class="text-xs tracking-[0.2em]">SCROLL</span>
-          <span class="w-[1px] h-12 bg-gradient-to-b from-gold to-transparent"></span>
-        </a>
       </div>
     </div>
   </section>
 
-  <!-- コンセプト：なぜ今こんにゃくスイーツなのか -->
+  <!-- コンセプト：静かに語る -->
   <section id="product-concept" class="py-16 lg:py-24 bg-white">
     <div class="max-w-[1120px] mx-auto px-5 sm:px-6">
-      <div class="max-w-[760px] mx-auto text-center">
-        <p class="reveal text-xs tracking-[0.18em] text-amber font-bold">CONCEPT — 企画の核</p>
-        <h2 class="font-serif font-bold text-[28px] sm:text-[36px] leading-tight mt-3">
+      <div class="max-w-[720px] mx-auto text-center">
+        <p class="reveal text-[11px] tracking-[0.2em] text-dark/40 font-bold">CONCEPT</p>
+        <h2 class="font-serif font-light text-[28px] sm:text-[36px] leading-tight mt-3 text-dark">
           <span class="text-reveal"><span>なぜ、今</span></span>
-          <span class="text-reveal" style="--delay:0.08s"><span>こんにゃくスイーツなのか。</span></span>
+          <span class="text-reveal" style="--delay:0.08s"><span>こんにゃくなのか。</span></span>
         </h2>
-        <div class="gold-line w-24 mx-auto mt-6"></div>
-        <p class="reveal mt-6 text-sm leading-8 text-muted" style="--delay:0.16s">
+        <div class="reveal mt-6 w-8 h-[1px] bg-gold mx-auto" style="--delay:0.16s"></div>
+        <p class="reveal mt-6 text-[14px] leading-8 text-muted font-light" style="--delay:0.2s">
           健康志向と和の再評価が交差する今、<br class="hidden sm:inline">
-          こんにゃくは「我慢の食材」から「選びたくなるデザート」へ変われる。<br>
-          群馬の風土が生んだこんにゃく芋は、その変化の主役になる資格がある。
+          こんにゃくは「我慢の食材」から「選びたくなる」存在へ変われる。<br>
+          群馬の風土が育んだこんにゃく芋に、その可能性がある。
         </p>
       </div>
-      <div class="mt-12 grid md:grid-cols-3 gap-6 stagger">
-        <div class="bg-cream rounded-2xl border border-line p-7">
-          <span class="w-12 h-12 rounded-xl bg-white border border-line flex items-center justify-center text-xl">🌿</span>
-          <h3 class="font-serif font-bold text-lg mt-4">健康を、我慢にしない</h3>
-          <p class="text-sm leading-6 text-muted mt-2">グルコマンナンの満腹感と食物繊維。低カロリーなのに満たされる。罪悪感のない贅沢を。</p>
-          <p class="text-xs font-bold text-amber mt-4">→ ヘルシー志向の若年層に響く</p>
+      <div class="mt-12 grid md:grid-cols-3 gap-[1px] bg-line border border-line stagger">
+        <div class="bg-cream p-8">
+          <p class="font-garamond text-[11px] tracking-[0.2em] text-dark/40">01 — HEALTH</p>
+          <h3 class="font-serif font-normal text-[18px] mt-3 text-dark">健康を、我慢にしない</h3>
+          <p class="text-[13px] leading-7 text-muted mt-3 font-light">グルコマンナンの満腹感と食物繊維。低カロリーでも満たされる。罪悪感のない贅沢を、日常に。</p>
         </div>
-        <div class="bg-dark text-white rounded-2xl p-7">
-          <span class="w-12 h-12 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-xl">🏔️</span>
-          <h3 class="font-serif font-bold text-lg mt-4 text-goldLight">群馬の物語を味わう</h3>
-          <p class="text-sm leading-6 text-white/70 mt-2">全国シェア90%の産地。生産者の顔が見える食材は、物語として強い。食べることが応援になる。</p>
-          <p class="text-xs font-bold text-gold mt-4">→ 間接的に農家を支援する設計</p>
+        <div class="bg-dark p-8">
+          <p class="font-garamond text-[11px] tracking-[0.2em] text-gold/60">02 — STORY</p>
+          <h3 class="font-serif font-normal text-[18px] mt-3 text-white">群馬の物語を味わう</h3>
+          <p class="text-[13px] leading-7 text-white/60 mt-3 font-light">全国シェア90%。生産者の顔が見える食材は、物語として強い。食べることが、応援になる。</p>
         </div>
-        <div class="bg-cream rounded-2xl border border-line p-7">
-          <span class="w-12 h-12 rounded-xl bg-white border border-line flex items-center justify-center text-xl">✨</span>
-          <h3 class="font-serif font-bold text-lg mt-4">変幻自在の可能性</h3>
-          <p class="text-sm leading-6 text-muted mt-2">ブランマンジェ、テリーヌ、ガトー。同じ素材が全く違う表情に。シェフの創造力を刺激する。</p>
-          <p class="text-xs font-bold text-amber mt-4">→ 高級レストランのデセールへ</p>
+        <div class="bg-cream p-8">
+          <p class="font-garamond text-[11px] tracking-[0.2em] text-dark/40">03 — CRAFT</p>
+          <h3 class="font-serif font-normal text-[18px] mt-3 text-dark">素材が、形を変える</h3>
+          <p class="text-[13px] leading-7 text-muted mt-3 font-light">絹のような滑らかさへ。同じ素材が、まったく違う表情を見せる。料理の可能性を広げる。</p>
         </div>
       </div>
-      <div class="reveal mt-10 bg-amberLight/30 border border-[#F0D9A8] rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-4" style="--delay:0.2s">
-        <span class="w-10 h-10 rounded-full bg-amber text-white flex items-center justify-center font-serif font-bold shrink-0">!</span>
+      <div class="reveal mt-10 border border-line p-6 flex gap-4 bg-cream" style="--delay:0.2s">
+        <span class="hidden sm:block w-[1px] bg-gold shrink-0"></span>
         <p class="text-sm leading-6"><span class="font-bold">企画書としての提案：</span>この3つの価値を1つの皿で表現する。それが私たちの「群馬こんにゃくアトリエ」です。</p>
       </div>
     </div>
   </section>
 
-  <!-- ラインナップ：切り替えアニメーション -->
-  <section id="product-lineup" class="py-16 lg:py-24 bg-cream">
+  <!-- 一品紹介：絹のブランマンジェ -->
+  <section id="product-detail" class="py-16 lg:py-24 bg-cream">
     <div class="max-w-[1120px] mx-auto px-5 sm:px-6">
-      <div class="flex flex-wrap items-end justify-between gap-4">
-        <div class="reveal">
-          <p class="text-xs tracking-[0.18em] text-amber font-bold">LINEUP — 3つの提案</p>
-          <h2 class="font-serif font-bold text-[26px] sm:text-[32px] mt-2">3皿の物語。選べる贅沢。</h2>
-          <p class="text-sm text-muted mt-2">タブを切り替えて、それぞれのコンセプトをご覧ください。</p>
-        </div>
-        <p class="reveal hidden lg:block text-xs text-muted" style="--delay:0.1s">高級レストランのコースのように、1皿ずつ味わう。</p>
+      <div class="max-w-[760px] mx-auto text-center">
+        <p class="reveal text-[11px] tracking-[0.2em] text-dark/40 font-bold">SIGNATURE DISH — 一品紹介</p>
+        <h2 class="font-serif font-light text-[28px] sm:text-[36px] leading-tight mt-3 text-dark">
+          <span class="text-reveal"><span>絹こんにゃくの</span></span>
+          <span class="text-reveal" style="--delay:0.08s"><span>ブランマンジェ。</span></span>
+        </h2>
+        <p class="font-garamond text-xs tracking-[0.2em] text-dark/30 mt-2 reveal" style="--delay:0.12s">KINU BLANCMANGE — GUNMA SILK</p>
+        <div class="reveal mt-6 w-8 h-[1px] bg-gold mx-auto" style="--delay:0.16s"></div>
       </div>
 
-      <!-- 商品切り替えタブ -->
-      <div class="reveal mt-8 flex flex-wrap gap-2 p-1.5 bg-white border border-line rounded-full w-fit" style="--delay:0.12s">
-        <button data-product="0" class="product-tab active px-5 py-2.5 rounded-full text-sm font-bold bg-dark text-white">01 絹のブランマンジェ</button>
-        <button data-product="1" class="product-tab px-5 py-2.5 rounded-full text-sm font-bold text-muted hover:bg-cream">02 琥珀のテリーヌ</button>
-        <button data-product="2" class="product-tab px-5 py-2.5 rounded-full text-sm font-bold text-muted hover:bg-cream">03 炭のガトー</button>
-      </div>
+      <div class="mt-12 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-12 items-start">
+        <!-- 画像：洗練されたフレーム -->
+        <div class="reveal-scale" style="--delay:0.08s">
+          <div class="bg-white border border-line p-3">
+            <div class="aspect-[4/3] bg-[#F4F1EB] border border-dark/5 flex flex-col items-center justify-center p-8 text-center">
+              <p class="font-garamond text-[11px] tracking-[0.25em] text-dark/30">PHOTO — COMING SOON</p>
+              <div class="mt-5 w-full max-w-[360px] aspect-[4/3] bg-white border border-dark/10 flex flex-col items-center justify-center p-6">
+                <p class="font-serif text-dark text-sm">絹こんにゃくのブランマンジェ</p>
+                <p class="font-garamond text-[11px] tracking-[0.15em] text-dark/40 mt-1">黒蜜・黄粉添え</p>
+                <div class="mt-4 w-12 h-[1px] bg-gold/40"></div>
+                <p class="font-garamond text-[10px] tracking-[0.14em] text-dark/30 mt-3">群馬県産こんにゃく芋 100%</p>
+              </div>
+              <p class="text-[11px] text-dark/30 mt-6 font-light">※ 試作完成後、写真に差し替え</p>
+            </div>
+          </div>
+          <div class="mt-4 flex items-center justify-between text-[11px] tracking-[0.1em] text-dark/40">
+            <span>群馬県産 100%</span>
+            <span class="w-8 h-[1px] bg-line"></span>
+            <span>フェーズ0 コンセプト</span>
+          </div>
+        </div>
 
-      <!-- 商品詳細：切り替えでアニメ -->
-      <div class="mt-8 relative">
-        <!-- 01 -->
-        <div data-panel="0" class="product-panel grid lg:grid-cols-2 gap-8 items-center">
-          <div class="img-reveal in aspect-[4/3] rounded-[24px] overflow-hidden bg-white border border-line">
-            <div class="w-full h-full bg-gradient-to-br from-[#FFF8E7] via-[#F5E6C8] to-[#E8D5A8] flex flex-col items-center justify-center p-8 text-center">
-              <span class="w-20 h-20 rounded-full bg-white border border-gold/20 flex items-center justify-center text-3xl shadow-lg">🍮</span>
-              <p class="font-serif text-2xl text-dark mt-4">絹こんにゃくのブランマンジェ</p>
-              <p class="text-xs tracking-[0.14em] text-muted mt-1">KINU BLANCMANGE — ¥680</p>
-              <p class="text-xs text-muted mt-3 max-w-[320px] leading-5">群馬のこんにゃくを絹ごしのように滑らかに。黒蜜と黄粉を添えて。</p>
+        <!-- 詳細：企画書のように -->
+        <div>
+          <p class="reveal text-[11px] tracking-[0.18em] text-amber font-bold">SIGNATURE — 01</p>
+          <h3 class="reveal font-serif font-light text-[22px] sm:text-[26px] leading-tight mt-2 text-dark" style="--delay:0.08s">
+            絹のように、<br>舌の上で消える。
+          </h3>
+          <p class="reveal mt-4 text-[13px] leading-7 text-muted font-light" style="--delay:0.12s">
+            刺身こんにゃくの製法を応用し、舌の上でほどける滑らかさを目指す。<br>
+            黒蜜の奥深さと黄粉の香ばしさが、こんにゃくの概念を静かに覆す。<br>
+            従来のブランマンジェの約1/3のカロリーで、罪悪感のない一皿。
+          </p>
+
+          <div class="reveal mt-8 border-t border-line" style="--delay:0.16s">
+            <div class="grid grid-cols-3 divide-x divide-line border-b border-line">
+              <div class="py-4 text-center">
+                <p class="font-garamond text-[11px] tracking-[0.14em] text-dark/40">CALORIE</p>
+                <p class="font-serif text-lg text-dark mt-1">~80<span class="text-xs text-muted">kcal</span></p>
+                <p class="text-[11px] text-muted mt-1">一食あたり</p>
+              </div>
+              <div class="py-4 text-center">
+                <p class="font-garamond text-[11px] tracking-[0.14em] text-dark/40">FIBER</p>
+                <p class="font-serif text-lg text-dark mt-1">豊富</p>
+                <p class="text-[11px] text-muted mt-1">グルコマンナン</p>
+              </div>
+              <div class="py-4 text-center">
+                <p class="font-garamond text-[11px] tracking-[0.14em] text-dark/40">ORIGIN</p>
+                <p class="font-serif text-lg text-dark mt-1">群馬</p>
+                <p class="text-[11px] text-muted mt-1">県産芋 100%</p>
+              </div>
             </div>
+            <dl class="divide-y divide-line text-sm">
+              <div class="flex justify-between py-3.5">
+                <dt class="text-muted font-light">想定価格</dt>
+                <dd class="font-medium">¥680 <span class="text-xs text-muted font-normal">（試作後検証）</span></dd>
+              </div>
+              <div class="flex justify-between py-3.5">
+                <dt class="text-muted font-light">食感</dt>
+                <dd class="font-medium">絹・とろける</dd>
+              </div>
+              <div class="flex justify-between py-3.5">
+                <dt class="text-muted font-light">ペアリング</dt>
+                <dd class="font-medium">ほうじ茶・黒蜜</dd>
+              </div>
+              <div class="flex justify-between py-3.5">
+                <dt class="text-muted font-light">提供想定</dt>
+                <dd class="font-medium">文化祭・カフェ・道の駅</dd>
+              </div>
+            </dl>
           </div>
-          <div>
-            <p class="text-xs tracking-[0.14em] text-amber font-bold">SIGNATURE 01 — HERO</p>
-            <h3 class="font-serif font-bold text-[24px] sm:text-[28px] leading-tight mt-2">絹のように、<br>口どけは群馬の誇り。</h3>
-            <p class="text-sm leading-7 text-muted mt-4">
-              刺身こんにゃくの製法を応用し、舌の上で消える滑らかさを実現。<br>
-              黒蜜の奥深さと、黄粉の香ばしさが、こんにゃくの概念を覆す。<br>
-              <span class="font-bold text-ink">カロリーは従来のブランマンジェの1/3。</span>
-            </p>
-            <div class="mt-6 grid grid-cols-3 gap-3">
-              <div class="bg-white border border-line rounded-xl p-3 text-center">
-                <p class="text-xs text-muted">食感</p>
-                <p class="font-bold text-sm mt-1">絹・とろける</p>
-              </div>
-              <div class="bg-white border border-line rounded-xl p-3 text-center">
-                <p class="text-xs text-muted">ペアリング</p>
-                <p class="font-bold text-sm mt-1">ほうじ茶</p>
-              </div>
-              <div class="bg-amber text-white rounded-xl p-3 text-center">
-                <p class="text-xs opacity-80">想い</p>
-                <p class="font-bold text-sm mt-1">群馬の絹</p>
-              </div>
-            </div>
-            <div class="mt-6 flex gap-3">
-              <span class="text-xs bg-cream border border-line px-3 py-1.5 rounded-full">試作予定</span>
-              <span class="text-xs bg-moss text-white px-3 py-1.5 rounded-full">推し</span>
-            </div>
+
+          <div class="reveal mt-6 flex flex-wrap gap-2" style="--delay:0.2s">
+            <span class="text-xs border border-line px-3 py-1.5 bg-white">試作予定</span>
+            <span class="text-xs border border-dark bg-dark text-white px-3 py-1.5">コンセプトモデル</span>
           </div>
-        </div>
-        <!-- 02 -->
-        <div data-panel="1" class="product-panel hidden grid lg:grid-cols-2 gap-8 items-center">
-          <div class="aspect-[4/3] rounded-[24px] overflow-hidden bg-white border border-line">
-            <div class="w-full h-full bg-gradient-to-br from-[#FFF0E0] via-[#FFD9B3] to-[#E8A878] flex flex-col items-center justify-center p-8 text-center">
-              <span class="w-20 h-20 rounded-full bg-white border border-amber/20 flex items-center justify-center text-3xl shadow-lg">🍰</span>
-              <p class="font-serif text-2xl text-dark mt-4">琥珀のこんにゃくテリーヌ</p>
-              <p class="text-xs tracking-[0.14em] text-muted mt-1">AMBER TERRINE — ¥750</p>
-              <p class="text-xs text-muted mt-3 max-w-[320px] leading-5">こんにゃくジュレを琥珀色に閉じ込めた、宝石のような一皿。</p>
-            </div>
-          </div>
-          <div>
-            <p class="text-xs tracking-[0.14em] text-amber font-bold">SIGNATURE 02 — JEWELRY</p>
-            <h3 class="font-serif font-bold text-[24px] sm:text-[28px] leading-tight mt-2">琥珀色に、<br>群馬の時を閉じ込める。</h3>
-            <p class="text-sm leading-7 text-muted mt-4">
-              こんにゃくジュレの透明感を活かし、季節の果実を浮かべる。<br>
-              見た目の美しさがSNSで拡散し、<span class="font-bold text-ink">「食べてみたい」が「群馬に行きたい」に変わる。</span>
-            </p>
-            <div class="mt-6 grid grid-cols-3 gap-3">
-              <div class="bg-white border border-line rounded-xl p-3 text-center">
-                <p class="text-xs text-muted">見た目</p>
-                <p class="font-bold text-sm mt-1">宝石・透明</p>
-              </div>
-              <div class="bg-white border border-line rounded-xl p-3 text-center">
-                <p class="text-xs text-muted">拡散力</p>
-                <p class="font-bold text-sm mt-1">SNS映え</p>
-              </div>
-              <div class="bg-amber text-white rounded-xl p-3 text-center">
-                <p class="text-xs opacity-80">狙い</p>
-                <p class="font-bold text-sm mt-1">話題化</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 03 -->
-        <div data-panel="2" class="product-panel hidden grid lg:grid-cols-2 gap-8 items-center">
-          <div class="aspect-[4/3] rounded-[24px] overflow-hidden bg-white border border-line">
-            <div class="w-full h-full bg-gradient-to-br from-[#2A2A2A] via-[#3A3A3A] to-[#1A1A1A] flex flex-col items-center justify-center p-8 text-center">
-              <span class="w-20 h-20 rounded-full bg-white flex items-center justify-center text-3xl shadow-lg">🍫</span>
-              <p class="font-serif text-2xl text-white mt-4">炭のこんにゃくガトー</p>
-              <p class="text-xs tracking-[0.14em] text-white/60 mt-1">CHARCOAL GATEAU — ¥720</p>
-              <p class="text-xs text-white/60 mt-3 max-w-[320px] leading-5">竹炭を練り込んだ黒いガトー。意外なもっちり感がクセになる。</p>
-            </div>
-          </div>
-          <div>
-            <p class="text-xs tracking-[0.14em] text-amber font-bold">SIGNATURE 03 — EDGE</p>
-            <h3 class="font-serif font-bold text-[24px] sm:text-[28px] leading-tight mt-2">黒い衝撃、<br>もっちりの余韻。</h3>
-            <p class="text-sm leading-7 text-muted mt-4">
-              竹炭とこんにゃくの弾力が合わさった、新食感ガトー。<br>
-              黒と白のコントラストが皿の上で映え、<span class="font-bold text-ink">男性や甘党でない層にも刺さる。</span>
-            </p>
-            <div class="mt-6 grid grid-cols-3 gap-3">
-              <div class="bg-white border border-line rounded-xl p-3 text-center">
-                <p class="text-xs text-muted">食感</p>
-                <p class="font-bold text-sm mt-1">もっちり</p>
-              </div>
-              <div class="bg-white border border-line rounded-xl p-3 text-center">
-                <p class="text-xs text-muted">ターゲット</p>
-                <p class="font-bold text-sm mt-1">新規層</p>
-              </div>
-              <div class="bg-dark text-white rounded-xl p-3 text-center">
-                <p class="text-xs opacity-60">個性</p>
-                <p class="font-bold text-sm mt-1">唯一無二</p>
-              </div>
-            </div>
-          </div>
+          <p class="reveal text-xs text-muted mt-4 font-light" style="--delay:0.24s">※ 価格・カロリーは想定。フェーズ0で試作し、原価と味を検証します。</p>
         </div>
       </div>
-      <p class="text-xs text-muted mt-6 text-center">※ 価格は想定。フェーズ0で試作し、原価を検証します。</p>
     </div>
   </section>
 
@@ -407,29 +346,29 @@ html { scroll-behavior: smooth; }
             </div>
           </div>
         </div>
-        <div class="reveal-scale bg-white/5 border border-white/10 rounded-[24px] p-6" style="--delay:0.1s">
-          <p class="text-xs tracking-[0.14em] text-gold font-bold text-center">PROCESS — 3年+3ステップ</p>
+        <div class="reveal-scale bg-white/[0.04] border border-white/10 p-6" style="--delay:0.1s">
+          <p class="font-garamond text-[11px] tracking-[0.2em] text-gold/60 text-center">PROCESS — 3年 + 3ステップ</p>
           <div class="mt-6 space-y-3">
-            <div class="bg-white text-dark rounded-2xl p-4 flex items-center gap-4">
-              <span class="w-10 h-10 rounded-xl bg-cream border border-line flex items-center justify-center">🌱</span>
+            <div class="bg-white text-dark p-4 flex items-center gap-4">
+              <span class="w-10 h-10 border border-dark/10 flex items-center justify-center font-garamond text-xs text-dark/40">01</span>
               <div>
-                <p class="font-bold text-sm">3年かけて育つ芋</p>
-                <p class="text-xs text-muted">群馬の土壌が育む</p>
+                <p class="font-medium text-sm">3年かけて育つ芋</p>
+                <p class="text-xs text-muted font-light">群馬の土壌が育む</p>
               </div>
-              <span class="ml-auto text-xs font-bold text-muted">群馬の畑</span>
+              <span class="ml-auto font-garamond text-xs tracking-[0.1em] text-dark/30">GUNMA FIELD</span>
             </div>
-            <div class="flex justify-center text-gold">↓</div>
-            <div class="bg-white text-dark rounded-2xl p-4 flex items-center gap-4">
-              <span class="w-10 h-10 rounded-xl bg-cream border border-line flex items-center justify-center">♨️</span>
+            <div class="flex justify-center text-white/20 text-xs">—</div>
+            <div class="bg-white text-dark p-4 flex items-center gap-4">
+              <span class="w-10 h-10 border border-dark/10 flex items-center justify-center font-garamond text-xs text-dark/40">02</span>
               <div>
                 <p class="font-bold text-sm">伝統の製法</p>
                 <p class="text-xs text-muted">灰汁で練り、茹でる</p>
               </div>
               <span class="ml-auto text-xs font-bold text-muted">職人技</span>
             </div>
-            <div class="flex justify-center text-gold">↓</div>
-            <div class="bg-gold text-dark rounded-2xl p-4 flex items-center gap-4">
-              <span class="w-10 h-10 rounded-xl bg-white flex items-center justify-center">✨</span>
+            <div class="flex justify-center text-white/20 text-xs">—</div>
+            <div class="bg-gold text-dark p-4 flex items-center gap-4">
+              <span class="w-10 h-10 bg-white border border-dark/10 flex items-center justify-center font-garamond text-xs text-dark/40">03</span>
               <div>
                 <p class="font-bold text-sm">私たちのデセールへ</p>
                 <p class="text-xs opacity-70">新しい食べ方を提案</p>
@@ -1048,32 +987,6 @@ document.querySelectorAll('.tab-mobile').forEach(el => {
 });
 // 初期ハッシュ
 if (location.hash === '#project') switchTab('project');
-// 商品内切り替え
-document.querySelectorAll('.product-tab').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const idx = btn.dataset.product;
-    document.querySelectorAll('.product-tab').forEach(b => {
-      b.classList.remove('active', 'bg-dark', 'text-white');
-      b.classList.add('text-muted');
-    });
-    btn.classList.add('active', 'bg-dark', 'text-white');
-    btn.classList.remove('text-muted');
-    document.querySelectorAll('.product-panel').forEach(p => {
-      const show = p.dataset.panel === idx;
-      p.classList.toggle('hidden', !show);
-      p.classList.toggle('grid', show);
-      if (show) {
-        p.style.opacity = '0';
-        p.style.transform = 'translateY(8px)';
-        setTimeout(() => {
-          p.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-          p.style.opacity = '1';
-          p.style.transform = 'translateY(0)';
-        }, 10);
-      }
-    });
-  });
-});
 // スクロールで文字が出るアニメーション
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
