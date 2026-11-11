@@ -3,610 +3,339 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="こんにゃく粉を使った、いちごのクレープをご紹介。ヤツドキクレープと樹徳高等学校2SS1班の取り組みです。">
-  <meta name="theme-color" content="#e9f7fc">
+  <meta name="description" content="群馬の名産こんにゃく粉を練り込んだ、いちごのクレープ。桐生のヤツドキクレープと樹徳高校2SS1班が、販売に向けて準備中です。商品の特徴、開発ストーリー、店舗情報をご紹介します。">
+  <meta name="theme-color" content="#eaf7fb">
   <meta name="color-scheme" content="light">
+  <meta name="format-detection" content="telephone=no">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="群馬こんにゃくプロジェクト">
   <meta property="og:title" content="こんにゃく粉入り いちごクレープ｜ヤツドキクレープ">
-  <meta property="og:description" content="こんにゃく粉を使った生地と、いちごのクレープ。ヤツドキクレープと樹徳高等学校2SS1班の取り組みをご紹介します。">
-  <title>こんにゃく粉入り いちごクレープ｜ヤツドキクレープ</title>
+  <meta property="og:description" content="群馬の名産こんにゃく粉を練り込んだ、いちごのクレープ。桐生のヤツドキクレープと樹徳高校2SS1班が、販売に向けて準備中です。">
+  <title>こんにゃく粉入り いちごクレープ｜ヤツドキクレープ × 樹徳高校2SS1班</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="../assets/product-crepe.webp" type="image/webp">
   <link rel="icon" href="../assets/project-emblem.png" type="image/png">
   <link rel="apple-touch-icon" href="../assets/project-emblem.png">
   <link rel="stylesheet" href="../assets/brand.css">
-  <style>
-    :root {
-      --paper: #fff;
-      --cream: #f5fbfd;
-      --ink: #263b49;
-      --muted: #647987;
-      --tomato: #5daecb;
-      --tomato-dark: #287c9c;
-      --tomato-soft: #eff9fc;
-      --leaf: #3987a4;
-      --leaf-soft: #e5f4f9;
-      --sun: #d8f0f8;
-      --line: #dcebf0;
-      --white: #fff;
-      --shadow: 0 12px 36px rgba(37, 92, 113, .08);
-    }
-
-    .product-top {
-      position: absolute;
-      z-index: 20;
-      top: 0;
-      right: 0;
-      left: 0;
-      border-bottom: 1px solid rgba(38,59,73,.08);
-      background: rgba(255,255,255,.82);
-      backdrop-filter: blur(14px);
-    }
-    .product-top .header-row { min-height: 68px; }
-    .product-top .brand-name { color: #263b49; }
-    .product-top .brand-sub { color: #718692; }
-    .product-top .nav-links a { color: #526a78; }
-    .product-top .nav-links .button { color: white; }
-    .product-hero {
-      min-height: min(790px, 100svh);
-      display: grid;
-      align-items: center;
-      overflow: hidden;
-      padding: 95px 0 45px;
-      background:
-        radial-gradient(ellipse at 76% 43%, rgba(255,255,255,.92) 0 19%, transparent 19.5%),
-        radial-gradient(ellipse at 80% 47%, rgba(202,235,246,.7) 0 30%, transparent 30.5%),
-        #e9f7fc;
-    }
-    .hero-inner {
-      width: min(1120px, calc(100% - 48px));
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 48px;
-      margin-inline: auto;
-    }
-    .hero-copy { position: relative; z-index: 1; }
-    .hero-eyebrow { margin: 0 0 15px; color: #287c9c; font-size: 11px; font-weight: 800; letter-spacing: .1em; }
-    .hero-title { margin: 0; color: #263b49; font-size: clamp(39px, 5.3vw, 64px); font-weight: 800; letter-spacing: -.055em; line-height: 1.28; }
-    .hero-title em { color: #e58b98; font-style: normal; }
-    .hero-copy-text { max-width: 440px; margin: 17px 0 0; color: #526a78; font-size: 14px; line-height: 2; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 25px; }
-    .hero-actions .button--tomato { background: #4a9fbe; }
-    .hero-actions .button--tomato:hover { background: #287c9c; }
-    .hero-actions .button--white { border: 1px solid #cfe4eb; background: rgba(255,255,255,.75); }
-    .hero-image { position: relative; width: min(100%, 495px); justify-self: end; animation: product-float 5.5s ease-in-out infinite; }
-    .hero-image img { width: 100%; filter: drop-shadow(0 20px 24px rgba(46,102,120,.12)); }
-    .hero-caption { position: absolute; right: 2%; bottom: 1%; padding: 11px 15px; border: 1px solid rgba(255,255,255,.8); border-radius: 12px; background: rgba(255,255,255,.88); color: #526a78; font-size: 10px; font-weight: 700; }
-    @keyframes product-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
-    .product-nav {
-      position: sticky;
-      z-index: 15;
-      top: 0;
-      border-bottom: 1px solid var(--line);
-      background: rgba(255,255,255,.94);
-      backdrop-filter: blur(12px);
-    }
-    .product-nav-inner { display: flex; justify-content: center; gap: 24px; overflow-x: auto; scrollbar-width: none; }
-    .product-nav-inner::-webkit-scrollbar { display: none; }
-    .product-nav a { position: relative; flex: none; padding: 15px 7px; color: #647987; font-size: 11px; font-weight: 700; text-decoration: none; }
-    .product-nav a::after { position: absolute; right: 7px; bottom: 0; left: 7px; height: 2px; transform: scaleX(0); background: #5daecb; content: ""; transition: transform .2s ease; }
-    .product-nav a:hover { color: #287c9c; }
-    .product-nav a:hover::after { transform: scaleX(1); }
-    .section-heading { max-width: 720px; margin: 0 auto 34px; text-align: center; }
-    .section-heading .section-copy { max-width: 560px; margin-inline: auto; }
-    .product-details { display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: 58px; }
-    .product-photo {
-      padding: 25px;
-      border-radius: 46% 46% 18px 18px;
-      background: #e9f7fc;
-    }
-    .product-photo img { width: 100%; }
-    .product-text h2 { margin: 0; font-size: clamp(25px, 3.5vw, 37px); font-weight: 800; letter-spacing: -.035em; line-height: 1.5; }
-    .product-text p { margin: 13px 0 0; color: var(--muted); font-size: 13px; line-height: 2; }
-    .product-points { margin: 22px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
-    .product-points li { display: flex; align-items: baseline; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--line); }
-    .product-points span { width: 68px; flex: none; color: var(--muted); font-size: 10px; }
-    .product-points strong { font-size: 12px; font-weight: 700; }
-    .shop-section { background: #e9f7fc; }
-    .shop-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: center; }
-    .shop-mark {
-      min-height: 260px;
-      display: grid;
-      place-content: center;
-      border-radius: 20px;
-      background: #d7eff7;
-      color: #287c9c;
-      text-align: center;
-    }
-    .shop-mark small { font-size: 10px; font-weight: 700; letter-spacing: .12em; }
-    .shop-mark strong { margin-top: 9px; font-size: clamp(27px, 4vw, 42px); font-weight: 800; letter-spacing: .02em; }
-    .shop-copy h2 { margin: 0; font-size: clamp(25px, 3.5vw, 36px); font-weight: 800; line-height: 1.5; }
-    .shop-copy > p { margin: 12px 0 0; color: var(--muted); font-size: 13px; line-height: 2; }
-    .shop-name { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; padding: 14px 17px; border: 1px solid #cfe4eb; border-radius: 11px; background: white; }
-    .shop-name span { color: #5daecb; font-size: 10px; font-weight: 700; }
-    .shop-name strong { font-size: 16px; font-weight: 800; }
-    .shop-note { margin-top: 13px !important; font-size: 10px !important; }
-    .survey-section { padding-block: 50px; background: #fff; }
-    .survey-banner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 27px 30px; border-radius: 16px; background: #f1f9fc; }
-    .survey-banner h2 { margin: 0; font-size: clamp(19px, 3vw, 27px); font-weight: 800; line-height: 1.5; }
-    .survey-banner p { margin: 6px 0 0; color: var(--muted); font-size: 11px; line-height: 1.8; }
-    .survey-banner .button--tomato { background: #4a9fbe; }
-    .survey-banner .button--tomato:hover { background: #287c9c; }
-    .product-footer { background: #f5fbfd; }
-    @media (max-width: 760px) {
-      .product-top { position: absolute; }
-      .product-hero { min-height: 0; padding: 110px 0 32px; background: radial-gradient(ellipse at 50% 77%, rgba(255,255,255,.95) 0 22%, transparent 22.5%), #e9f7fc; }
-      .hero-inner { width: min(100% - 36px, 590px); grid-template-columns: 1fr; gap: 0; }
-      .hero-title { font-size: clamp(39px, 10vw, 57px); }
-      .hero-copy-text { font-size: 12px; }
-      .hero-image { width: min(82%, 350px); margin: 8px auto -4px; justify-self: center; }
-      .hero-caption { right: -5%; bottom: 0; }
-      .product-nav-inner { justify-content: flex-start; gap: 12px; }
-      .product-nav a { padding-inline: 5px; font-size: 10px; }
-      .product-details, .shop-layout { grid-template-columns: 1fr; gap: 27px; }
-      .product-photo { width: min(100%, 420px); margin-inline: auto; }
-      .shop-mark { min-height: 190px; }
-    }
-    @media (max-width: 520px) {
-      .product-top .nav-links a:not(.button) { display: none; }
-      .product-top .nav-links .button { min-height: 38px; padding: 8px 11px; font-size: 10px; }
-      .survey-banner { align-items: stretch; flex-direction: column; padding: 22px 18px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .hero-image { animation: none; }
-    }
-    .product-hero {
-      min-height: min(820px, 100svh);
-      background:
-        radial-gradient(circle at 78% 45%, rgba(255,255,255,.92) 0 23%, transparent 23.2%),
-        linear-gradient(135deg, #effaff 0%, #dff3fa 100%);
-    }
-    .hero-inner { width: min(1240px, calc(100% - 64px)); gap: 30px; }
-    .hero-eyebrow { letter-spacing: .18em; }
-    .hero-title { font-size: clamp(48px, 7vw, 88px); letter-spacing: -.075em; line-height: 1.18; }
-    .hero-title { display: grid; grid-template-columns: repeat(6, 1fr); }
-    .hero-title span:first-child { grid-column: 1 / span 5; }
-    .hero-title span:nth-child(2) { grid-column: 3 / span 2; justify-self: center; }
-    .hero-title span:last-child { grid-column: 2 / span 5; justify-self: end; }
-    .hero-title em { color: #3698ba; }
-    .hero-copy-text { max-width: 470px; font-size: 15px; }
-    .hero-image { width: min(100%, 590px); }
-    .hero-caption { right: 0; bottom: 3%; padding: 13px 17px; border-radius: 999px; }
-    .product-nav { top: 0; }
-    .product-nav-inner { justify-content: flex-start; }
-    .product-nav a { padding-block: 18px; }
-    .section-heading .kicker,
-    .shop-copy .kicker { letter-spacing: .18em; }
-    .product-details { gap: clamp(32px, 7vw, 100px); }
-    .product-photo { padding: clamp(22px, 5vw, 54px); border-radius: 48% 48% 18px 18px; }
-    .product-text h2 { font-size: clamp(32px, 4vw, 48px); line-height: 1.4; }
-    .product-text p { font-size: 14px; }
-    .shop-section { padding-block: clamp(58px, 9vw, 110px); background: #e9f7fc; }
-    .shop-layout { grid-template-columns: 1fr; gap: 34px; align-items: start; }
-    .shop-copy { max-width: 760px; }
-    .shop-copy h2 { font-size: clamp(34px, 5vw, 58px); letter-spacing: -.05em; }
-    .shop-copy > p { max-width: 660px; font-size: 14px; }
-    .shop-name { margin-top: 20px; }
-    .shop-note { max-width: 700px; }
-    .shop-information {
-      display: grid;
-      grid-template-columns: minmax(250px, .75fr) minmax(0, 1.25fr);
-      overflow: hidden;
-      border: 1px solid #d5eaf1;
-      border-radius: 18px;
-      background: #fff;
-      box-shadow: 0 18px 50px rgba(37, 92, 113, .08);
-    }
-    .shop-facts { padding: clamp(22px, 4vw, 38px); }
-    .shop-facts h3 { margin: 0 0 14px; font-size: 19px; }
-    .shop-facts dl { margin: 0; }
-    .shop-facts dl div { padding: 13px 0; border-top: 1px solid #e5f0f3; }
-    .shop-facts dt { color: #718692; font-size: 10px; font-weight: 700; }
-    .shop-facts dd { margin: 4px 0 0; color: #263b49; font-size: 13px; font-weight: 700; line-height: 1.8; }
-    .shop-facts a { color: #287c9c; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-    .shop-map { min-height: 380px; background: #d7eff7; }
-    .shop-map iframe { width: 100%; height: 100%; min-height: 380px; display: block; border: 0; }
-    .shop-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-    .shop-links .button { min-height: 42px; }
-    .shop-source { margin-top: 15px !important; color: #718692 !important; font-size: 10px !important; }
-    .shop-source a { color: #287c9c; }
-    @media (max-width: 760px) {
-      .product-hero { padding: 110px 0 32px; }
-      .hero-inner { width: min(100% - 36px, 590px); }
-      .hero-title { font-size: clamp(43px, 11vw, 64px); }
-      .hero-copy-text { font-size: 13px; }
-      .hero-image { width: min(88%, 390px); }
-      .shop-information { grid-template-columns: 1fr; }
-      .shop-map, .shop-map iframe { min-height: 320px; }
-    }
-    @media (max-width: 520px) {
-      .hero-title { font-size: clamp(39px, 10vw, 54px); }
-      .shop-map, .shop-map iframe { min-height: 270px; }
-    }
-    html {
-      scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;
-    }
-    .product-hero,
-    #product,
-    #shop,
-    .survey-section {
-      min-height: 100svh;
-      scroll-snap-align: start;
-      scroll-snap-stop: normal;
-    }
-    #product,
-    #shop,
-    .survey-section { scroll-margin-top: 54px; }
-    .product-hero { scroll-snap-align: start; }
-    .product-hero,
-    #product,
-    #shop,
-    .survey-section {
-      display: grid;
-      align-content: center;
-    }
-    .product-hero { padding-block: 100px 55px; }
-    #product.section { padding-block: clamp(60px, 8vh, 90px); }
-    #shop.shop-section { padding-block: clamp(56px, 7vh, 82px); }
-    .survey-section { padding-block: 40px; }
-    @media (max-width: 760px) {
-      .product-hero { min-height: 100svh; padding-block: 105px 34px; }
-      #product.section,
-      #shop.shop-section { padding-block: 66px 48px; }
-      #product,
-      #shop,
-      .survey-section { scroll-margin-top: 48px; }
-      .survey-section { padding-block: 35px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-snap-type: none; }
-    }
-    .product-hero { min-height: 100svh; padding: 0; }
-    .hero-inner { position: relative; width: 100%; height: 100svh; display: block; }
-    .hero-copy { position: absolute; inset: 0; }
-    .hero-eyebrow { position: absolute; top: 94px; left: 4vw; }
-    .hero-title {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      display: block;
-      margin: 0;
-      font-size: 0;
-      line-height: 1;
-      pointer-events: none;
-    }
-    .hero-title span { position: absolute; white-space: nowrap; }
-    .hero-title span:first-child {
-      top: 14%;
-      left: 5vw;
-      color: #263b49;
-      font-size: clamp(54px, 6.2vw, 90px);
-      letter-spacing: .12em;
-      text-shadow: 0 2px 0 #effaff, 2px 0 0 #effaff, 0 -2px 0 #effaff, -2px 0 0 #effaff;
-      writing-mode: vertical-rl;
-      text-orientation: upright;
-    }
-    .hero-title span:nth-child(2) {
-      bottom: 18%;
-      left: 7vw;
-      width: clamp(62px, 6vw, 92px);
-      aspect-ratio: 1;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(255,255,255,.9);
-      border-radius: 50%;
-      background: rgba(255,255,255,.92);
-      box-shadow: 0 12px 35px rgba(37,92,113,.12);
-      color: #3698ba;
-      font-size: clamp(34px, 3.5vw, 52px);
-    }
-    .hero-title span:last-child {
-      right: 6vw;
-      bottom: 6%;
-      color: #263b49;
-      font-size: clamp(58px, 9vw, 132px);
-      letter-spacing: -.08em;
-      text-shadow: 0 2px 0 #effaff, 2px 0 0 #effaff, 0 -2px 0 #effaff, -2px 0 0 #effaff;
-    }
-    .hero-copy-text { display: none; }
-    .hero-actions { position: absolute; bottom: 3.5vh; left: 4vw; z-index: 3; margin: 0; }
-    .hero-image {
-      position: absolute;
-      top: 10%;
-      right: 7vw;
-      z-index: 1;
-      width: min(43vw, 48svh, 580px);
-      animation-name: product-float-corner;
-    }
-    .hero-image::before {
-      position: absolute;
-      inset: 9% 4%;
-      border: 1px solid rgba(255,255,255,.9);
-      border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(255,255,255,.96), rgba(255,255,255,.64) 68%, rgba(255,255,255,0) 69%);
-      content: "";
-      transform: rotate(-12deg) scale(1.12);
-    }
-    .hero-image img { position: relative; z-index: 1; transform: rotate(-5deg); filter: drop-shadow(0 26px 26px rgba(46,102,120,.16)); }
-    @keyframes product-float-corner {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-9px); }
-    }
-    @media (max-width: 760px) {
-      .hero-inner { width: 100%; height: 100svh; }
-      .hero-eyebrow { top: 88px; left: 5vw; }
-      .hero-title span:first-child {
-        top: 15%;
-        left: 5vw;
-        font-size: clamp(42px, 9.8vw, 74px);
-      }
-      .hero-title span:nth-child(2) {
-        bottom: 17%;
-        left: 6vw;
-        width: clamp(52px, 8vw, 68px);
-        font-size: 32px;
-      }
-      .hero-title span:last-child {
-        right: 5vw;
-        bottom: 6%;
-        font-size: clamp(44px, 10vw, 76px);
-      }
-      .hero-actions { bottom: 3vh; left: 5vw; }
-      .hero-image { top: 12%; right: 4vw; width: min(72vw, 46svh, 420px); }
-    }
-    @media (max-width: 520px) {
-      .hero-eyebrow { top: 84px; }
-      .hero-title span:first-child { top: 17%; font-size: clamp(40px, 10.8vw, 56px); }
-      .hero-title span:nth-child(2) { bottom: 17%; width: 52px; font-size: 26px; }
-      .hero-title span:last-child { font-size: clamp(42px, 11vw, 58px); }
-      .hero-image { top: 15%; right: 2vw; width: min(76vw, 45svh, 340px); }
-    }
-    @media (max-height: 520px) and (orientation: landscape) {
-      .hero-eyebrow { top: 78px; }
-      .hero-title span:first-child { top: 13%; font-size: clamp(30px, 7svh, 44px); }
-      .hero-title span:nth-child(2) { bottom: 14%; width: 48px; font-size: 24px; }
-      .hero-title span:last-child { bottom: 6%; font-size: clamp(42px, 8vw, 62px); }
-      .hero-image { top: 17%; right: 5vw; width: min(34vw, 40svh, 220px); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .hero-image { animation: none; }
-    }
-    .product-hero {
-      min-height: 100svh;
-      padding: 88px 0 34px;
-      background:
-        radial-gradient(ellipse at 76% 48%, rgba(255,255,255,.92) 0 24%, transparent 24.5%),
-        linear-gradient(135deg, #effaff 0%, #dff3fa 100%);
-    }
-    .hero-inner {
-      width: min(1240px, calc(100% - 64px));
-      min-height: calc(100svh - 122px);
-      display: grid;
-      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-      align-items: center;
-      gap: clamp(24px, 5vw, 72px);
-    }
-    .hero-copy { position: relative; inset: auto; z-index: 2; }
-    .hero-eyebrow { position: static; margin-bottom: 20px; font-size: 11px; letter-spacing: .16em; }
-    .hero-title {
-      position: static;
-      inset: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1px;
-      font-size: clamp(48px, 6.2vw, 88px);
-      letter-spacing: -.075em;
-      line-height: 1.12;
-    }
-    .hero-title span:first-child,
-    .hero-title span:last-child {
-      position: static;
-      color: #263b49;
-      font-size: inherit;
-      letter-spacing: inherit;
-      text-shadow: none;
-      writing-mode: horizontal-tb;
-    }
-    .hero-title span:nth-child(2) {
-      position: static;
-      width: auto;
-      aspect-ratio: auto;
-      display: block;
-      border: 0;
-      border-radius: 0;
-      background: none;
-      box-shadow: none;
-      color: #3698ba;
-      font-size: .56em;
-      line-height: 1;
-    }
-    .hero-title span { position: static; }
-    .hero-copy-text { display: block; max-width: 390px; margin-top: 20px; font-size: 13px; }
-    .hero-actions { position: static; display: flex; margin-top: 24px; }
-    .hero-image {
-      position: relative;
-      top: auto;
-      right: auto;
-      width: min(100%, 520px);
-      justify-self: center;
-      animation-name: product-float;
-    }
-    .hero-image::before {
-      inset: 5% 2%;
-      border: 1px solid rgba(255,255,255,.92);
-      background: radial-gradient(ellipse, rgba(255,255,255,.92), rgba(255,255,255,.48) 68%, rgba(255,255,255,0) 69%);
-    }
-    .hero-image img { transform: none; }
-    .hero-image .hero-strawberry {
-      position: absolute;
-      z-index: 2;
-      top: 5%;
-      right: 3%;
-      width: clamp(76px, 15vw, 150px);
-      filter: drop-shadow(0 10px 12px rgba(89,80,54,.12));
-      transform: rotate(9deg);
-      pointer-events: none;
-    }
-    @media (max-width: 760px) {
-      .product-hero { min-height: 100svh; padding: 92px 0 24px; }
-      .hero-inner {
-        width: min(100% - 36px, 560px);
-        min-height: calc(100svh - 116px);
-        grid-template-columns: 1fr;
-        grid-template-rows: auto minmax(0, 1fr);
-        align-content: center;
-        gap: 4px;
-      }
-      .hero-copy { align-self: end; }
-      .hero-eyebrow { margin-bottom: 10px; font-size: 9px; }
-      .hero-title {
-        display: flex;
-        flex-direction: row;
-        align-items: baseline;
-        gap: .12em;
-        font-size: clamp(34px, 7.6vw, 54px);
-        line-height: 1.2;
-      }
-      .hero-title span { position: static; white-space: nowrap; }
-      .hero-title span:first-child,
-      .hero-title span:last-child {
-        font-size: inherit;
-        letter-spacing: -.075em;
-        text-shadow: none;
-        writing-mode: horizontal-tb;
-        text-orientation: mixed;
-      }
-      .hero-title span:nth-child(2) {
-        width: auto;
-        aspect-ratio: auto;
-        display: block;
-        border: 0;
-        border-radius: 0;
-        background: none;
-        box-shadow: none;
-        font-size: .62em;
-        line-height: 1;
-      }
-      .hero-copy-text { display: none; }
-      .hero-actions { gap: 8px; margin-top: 13px; }
-      .hero-actions .button { min-height: 38px; padding: 8px 13px; }
-      .hero-image { width: min(72vw, 46svh, 370px); align-self: center; }
-      .hero-image .hero-strawberry { top: 7%; right: 1%; width: clamp(64px, 20vw, 108px); }
-    }
-    @media (max-width: 520px) {
-      .product-hero { padding-block: 88px 20px; }
-      .hero-inner { width: min(100% - 30px, 430px); min-height: calc(100svh - 108px); gap: 0; }
-      .hero-title { font-size: clamp(28px, 8.5vw, 43px); }
-      .hero-image { width: min(77vw, 43svh, 320px); }
-      .hero-image .hero-strawberry { top: 7%; right: 0; width: clamp(58px, 19vw, 88px); }
-    }
-    @media (max-height: 520px) and (orientation: landscape) {
-      .product-hero { padding-block: 78px 16px; }
-      .hero-inner { min-height: calc(100svh - 94px); grid-template-columns: .85fr 1.15fr; grid-template-rows: auto; gap: 20px; }
-      .hero-title { flex-direction: column; font-size: clamp(32px, 7svh, 52px); }
-      .hero-eyebrow { margin-bottom: 9px; }
-      .hero-copy-text { display: none; }
-      .hero-actions { margin-top: 12px; }
-      .hero-image { width: min(34vw, 50svh, 230px); }
-      .hero-image .hero-strawberry { width: clamp(54px, 13svh, 78px); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .hero-image { animation: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/product.css">
   <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('has-motion');</script>
 </head>
 <body id="top">
   <a class="skip-link" href="#main">本文へスキップ</a>
-  <header class="product-top">
+
+  <svg xmlns="http://www.w3.org/2000/svg" class="svg-sprite" aria-hidden="true">
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 4v15M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-12A7 7 0 0 0 5 9c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 9h16"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M7 4h3l1.5 4-2 1.5a13 13 0 0 0 5 5l1.5-2 4 1.5v3c0 1-.8 2-2 2C10.7 19 5 13.3 5 6c0-1.2.8-2 2-2Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 6 6-2 6 2 6-2v14l-6 2-6-2-6 2V6Z"/><path d="M9 4v14M15 6v14"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M19 5C11 5 5 9 5 16c0 2 1 3 3 3 7 0 11-6 11-14Z"/><path d="M5 19c2-5 6-8 11-10"/></symbol>
+    <symbol id="i-konnyaku" viewBox="0 0 24 24"><path d="M12 3c2 2 6 3 8 7 2 4 0 9-5 10-6 1-11-3-11-8 0-4 4-6 8-9Z"/><path d="M10 9h.01M14 8h.01M13 12h.01" stroke-width="2.3"/></symbol>
+    <symbol id="i-crepe" viewBox="0 0 24 24"><path d="M5 5h14l-5 15H10L5 5Z"/><path d="M5 5c3 2 10 2 14 0M9 10c2 1 4 1 6 0"/></symbol>
+    <symbol id="i-strawberry" viewBox="0 0 24 24"><path d="M12 8c-1-2-3-3-5-3 0 2 .8 3.4 2 4.4C7 10.7 5 13 5 15.4 5 19 8.4 21 12 21s7-2 7-5.6c0-2.4-2-4.7-4-6 1.2-1 2-2.4 2-4.4-2 0-4 1-5 3Z"/><path d="M12 8V4M9 3l3 1 3-1"/><path d="M9 13h.01M13 12h.01M15 16h.01M10 17h.01" stroke-width="2.2"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3c.5 5 4 8.5 9 9-5 .5-8.5 4-9 9-.5-5-4-8.5-9-9 5-.5 8.5-4 9-9Z"/></symbol>
+  </svg>
+
+  <div class="top-strip">
+    <div class="wrap top-strip-inner">
+      <span>GUNMA KONNYAKU PROJECT</span>
+      <span class="top-strip-note">樹徳高等学校 2SS1班 × ヤツドキクレープ</span>
+    </div>
+  </div>
+
+  <header class="site-header product-header">
     <div class="wrap header-row">
       <a class="brand" href="../" aria-label="プロジェクトサイトへ戻る">
         <img class="brand-stamp" src="../assets/project-emblem.png" alt="" aria-hidden="true">
-        <span class="brand-copy"><span class="brand-name">こんにゃく粉入り いちごクレープ</span><span class="brand-sub">樹徳高等学校 2SS1班 × ヤツドキクレープ</span></span>
+        <span class="brand-copy"><span class="brand-name"><span class="brand-name-prefix">こんにゃく粉入り </span>いちごクレープ</span><span class="brand-sub">樹徳高等学校 2SS1班 × ヤツドキクレープ</span></span>
       </a>
-      <nav class="nav-links" aria-label="メインナビゲーション">
-        <a href="#product">商品紹介</a>
-        <a href="#shop">お店の紹介</a>
-        <a class="button button--tomato" href="../survey/">感想を送る <span aria-hidden="true">→</span></a>
+      <nav class="nav-links product-nav" aria-label="メインナビゲーション">
+        <a href="#product">商品について</a>
+        <a href="#story">開発ストーリー</a>
+        <a href="#shop">お店</a>
+        <a class="button button--primary button--small" href="#shop" aria-label="お店情報を見る"><span class="button-label-long">お店情報</span><span class="button-label-short">お店</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="product-hero" aria-labelledby="product-title">
-      <div class="hero-inner">
+    <section class="hero" aria-labelledby="product-title">
+      <div class="wrap hero-inner">
         <div class="hero-copy reveal">
-          <p class="hero-eyebrow">JUTOKU × YATSUDOKI</p>
-          <h1 class="hero-title" id="product-title"><span>こんにゃく</span><span>×</span><span>クレープ</span></h1>
-          <div class="hero-actions"><a class="button button--tomato" href="#product">商品 <span aria-hidden="true">↓</span></a><a class="button button--white" href="#shop">お店 <span aria-hidden="true">↓</span></a></div>
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>GUNMA KONNYAKU PROJECT / PRODUCT</p>
+          <h1 class="hero-title" id="product-title">
+            <span class="hero-title-lead">こんにゃく粉入りの</span>
+            <span class="hero-title-main"><span class="hero-title-fruit">いちご</span>クレープ<span class="hero-title-period">。</span></span>
+          </h1>
+          <p class="hero-lead">群馬の名産こんにゃくを、クレープ生地に。<span class="nowrap">もちっと</span>焼き上げた生地に、いちごの甘酸っぱさを重ねました。</p>
+          <div class="hero-tags">
+            <span class="status"><span class="status-dot" aria-hidden="true"></span>販売準備中</span>
+            <span class="hero-place"><svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>桐生・ヤツドキクレープ</span>
+          </div>
+          <div class="hero-actions">
+            <a class="button button--primary" href="#product">商品について見る <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"></use></svg></a>
+            <a class="text-link" href="#shop">お店の情報 <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+          </div>
+          <p class="hero-note">販売日・価格は決まり次第、このページでお知らせします。</p>
         </div>
-        <div class="hero-image reveal">
-          <img src="../assets/product-crepe.png" alt="いちごやベリーをたっぷりのせたクレープのイラスト">
-          <img class="hero-strawberry" src="../assets/strawberry-illustration.png" alt="" aria-hidden="true">
+
+        <div class="hero-visual reveal">
+          <svg class="hero-orbit" viewBox="0 0 640 640" fill="none" aria-hidden="true">
+            <circle cx="320" cy="320" r="286" stroke="#fff" stroke-width="1.2" opacity=".9"/>
+            <circle cx="320" cy="320" r="244" stroke="#2f7f9b" stroke-width="1" stroke-dasharray="2 10" opacity=".34"/>
+            <path d="M512 108c22-28 51-44 88-48-7 34-28 62-62 76" stroke="#4f7656" stroke-width="1.2" opacity=".55"/>
+            <path d="M512 108c20-8 43-17 64-30" stroke="#4f7656" stroke-width="1.2" opacity=".55"/>
+            <path d="M126 440c-18 10-33 26-42 46 24 3 47-6 61-24" stroke="#4f7656" stroke-width="1.2" opacity=".38"/>
+            <path d="M525 442l4 10 10 4-10 4-4 10-4-10-10-4 10-4 4-10Z" fill="#cf4f5e" opacity=".32"/>
+            <path d="M120 178l3 8 8 3-8 3-3 8-3-8-8-3 8-3 3-8Z" fill="#cf4f5e" opacity=".24"/>
+            <circle cx="501" cy="363" r="4" fill="#cf4f5e" opacity=".32"/>
+          </svg>
+
+          <div class="hero-image-wrap">
+            <picture>
+              <source srcset="../assets/product-crepe.webp" type="image/webp">
+              <img class="hero-crepe" src="../assets/product-crepe.png" width="1000" height="1363" alt="いちご、ブルーベリー、ラズベリーをのせたクレープのイラスト" fetchpriority="high" decoding="async">
+            </picture>
+            <picture>
+              <source srcset="../assets/strawberry-illustration.webp" type="image/webp">
+              <img class="hero-strawberry" src="../assets/strawberry-illustration.png" width="640" height="512" alt="" aria-hidden="true" decoding="async">
+            </picture>
+            <svg class="hero-seal" viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="56" fill="#fffdf9" stroke="#22343e" stroke-width="1.1"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#cf4f5e" stroke-width=".8" stroke-dasharray="1 4"/>
+              <path id="seal-arc" d="M60 60m-41 0a41 41 0 1 1 82 0a41 41 0 1 1-82 0" fill="none"/>
+              <text fill="#ad3949" font-family="'Zen Kaku Gothic New', sans-serif" font-size="6.3" font-weight="700" letter-spacing="1.2"><textPath href="#seal-arc" startOffset="2">GUNMA KONNYAKU PROJECT · 2SS1 ·</textPath></text>
+              <text x="60" y="58" text-anchor="middle" fill="#22343e" font-family="'DM Serif Display', Georgia, serif" font-size="25" font-style="italic">crepe</text>
+              <text x="60" y="76" text-anchor="middle" fill="#cf4f5e" font-family="'Zen Kaku Gothic New', sans-serif" font-size="7" font-weight="700" letter-spacing="2">YATSUDOKI</text>
+            </svg>
+            <span class="hero-image-label" aria-hidden="true">illustration / 商品イメージ</span>
+          </div>
         </div>
+      </div>
+      <span class="hero-scroll" aria-hidden="true"><span></span>SCROLL</span>
+    </section>
+
+    <section class="promise-strip" aria-label="このクレープの特徴">
+      <div class="wrap promise-grid">
+        <article class="promise">
+          <span class="promise-icon" aria-hidden="true"><svg class="icon"><use href="#i-konnyaku"></use></svg></span>
+          <div><p class="promise-label">01 / DOUGH</p><strong>こんにゃく粉入りの生地</strong><p>群馬の名産を、クレープ生地に。</p></div>
+        </article>
+        <article class="promise">
+          <span class="promise-icon" aria-hidden="true"><svg class="icon"><use href="#i-strawberry"></use></svg></span>
+          <div><p class="promise-label">02 / STRAWBERRY</p><strong>いちごの甘酸っぱさ</strong><p>クリームと合わせた、やさしい味わい。</p></div>
+        </article>
+        <article class="promise">
+          <span class="promise-icon" aria-hidden="true"><svg class="icon"><use href="#i-crepe"></use></svg></span>
+          <div><p class="promise-label">03 / KIRYU</p><strong>桐生のお店から</strong><p>ヤツドキクレープで販売準備中。</p></div>
+        </article>
       </div>
     </section>
 
-    <nav class="product-nav" aria-label="商品ページ内ナビゲーション">
-      <div class="wrap product-nav-inner"><a href="#top">TOP</a><a href="#product">クレープ紹介</a><a href="#shop">ヤツドキクレープ</a><a href="../survey/">アンケート</a></div>
-    </nav>
-
-    <section class="section section--white" id="product">
+    <section class="section product-section" id="product">
       <div class="wrap">
-        <div class="section-heading reveal"><p class="kicker">THE CREPE</p><h2 class="section-title">いちごと、もちっと。</h2></div>
-        <div class="product-details">
-          <div class="product-photo reveal"><img src="../assets/product-crepe.png" alt="いちごやベリーをたっぷりのせたクレープのイラスト"></div>
-          <div class="product-text reveal">
-            <h2>こんにゃく粉入り<br>いちごクレープ</h2>
-            <ul class="product-points">
-              <li><span>商品</span><strong>こんにゃく粉入り いちごクレープ</strong></li>
-              <li><span>販売店</span><strong>ヤツドキクレープ</strong></li>
-              <li><span>販売日・価格</span><strong>決まり次第お知らせします</strong></li>
-            </ul>
+        <header class="section-head reveal">
+          <p class="section-index"><span>01</span>THE CREPE</p>
+          <h2 class="display">もちっと、<br>いちごの甘酸っぱさ。</h2>
+          <p class="section-lead">こんにゃく粉を練り込んだ生地に、いちごとクリームを合わせました。群馬の名産を、もっと身近に楽しめるおやつに。</p>
+        </header>
+
+        <div class="product-layout">
+          <figure class="product-figure reveal">
+            <div class="product-frame">
+              <span class="frame-label" aria-hidden="true">yatsudoki crepe</span>
+              <picture>
+                <source srcset="../assets/product-crepe.webp" type="image/webp">
+                <img src="../assets/product-crepe.png" width="1000" height="1363" alt="いちご、ブルーベリー、ラズベリーをのせたクレープのイラスト" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption>掲載イラストは商品イメージです。実際の商品とは異なる場合があります。</figcaption>
+          </figure>
+
+          <div class="feature-list reveal">
+            <article class="feature">
+              <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-konnyaku"></use></svg></span>
+              <div class="feature-copy"><span class="feature-no">01</span><h3>こんにゃく粉を、生地に。</h3><p>群馬の名産・こんにゃくを粉にして、クレープ生地に練り込みました。こんにゃくの香りが気にならない、もちっとした食感に。</p></div>
+            </article>
+            <article class="feature">
+              <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-strawberry"></use></svg></span>
+              <div class="feature-copy"><span class="feature-no">02</span><h3>いちごの、甘酸っぱさ。</h3><p>主役はいちご。やわらかなクリームと合わせて、最後まで飽きずに食べられる味わいに仕上げました。</p></div>
+            </article>
+            <article class="feature">
+              <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-leaf"></use></svg></span>
+              <div class="feature-copy"><span class="feature-no">03</span><h3>桐生から、新しいおやつ。</h3><p>樹徳高校2SS1班と、桐生のクレープ店ヤツドキクレープ。地域の名産を、身近なおやつに変える挑戦です。</p></div>
+            </article>
           </div>
+        </div>
+
+        <aside class="product-meta reveal" aria-label="商品情報">
+          <div class="product-meta-intro">
+            <p class="kicker">PRODUCT INFO</p>
+            <h3>商品情報</h3>
+            <span class="status"><span class="status-dot" aria-hidden="true"></span>販売準備中</span>
+          </div>
+          <dl class="product-meta-list">
+            <div><dt>商品名</dt><dd>こんにゃく粉入り いちごクレープ</dd></div>
+            <div><dt>販売店</dt><dd>ヤツドキクレープ</dd></div>
+            <div><dt>販売日</dt><dd>決まり次第お知らせします</dd></div>
+            <div><dt>価格</dt><dd>未定</dd></div>
+          </dl>
+          <p class="product-meta-note">販売日・価格が決まり次第、このページでお知らせします。原材料・アレルギー情報は、販売時に店頭でご確認ください。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section story-section" id="story">
+      <div class="wrap story-layout">
+        <div class="story-intro reveal">
+          <p class="section-index"><span>02</span>THE STORY</p>
+          <h2 class="display">こんにゃくに、<br>新しい出番を。</h2>
+          <p>群馬は、こんにゃく芋の生産が全国の約9割。そんな名産に、私たちの世代にも届く新しい食べ方を提案したい。樹徳高校2SS1班の探究から、このクレープづくりが始まりました。</p>
+          <p>試作を重ね、こんにゃく粉の香りが気にならず、もちもち感を楽しめる配合を探しました。桐生の街で愛されるヤツドキクレープと一緒に、販売に向けて準備を進めています。</p>
+          <figure class="quote-card">
+            <blockquote>こんにゃくの匂いもなく、<br>もちもちでおいしい。</blockquote>
+            <figcaption>— クレープの配合実験メモより</figcaption>
+          </figure>
+        </div>
+
+        <div class="story-panel reveal">
+          <div class="story-panel-head"><span>TRIAL LOG</span><span>2026.09</span></div>
+          <h3>6段階の配合を、食べ比べ。</h3>
+          <p>こんにゃく粉の割合を変えて、香り・食感・味を比較しました。</p>
+          <div class="trial-chips" aria-label="試したこんにゃく粉の割合">
+            <span class="trial-chip">0%</span>
+            <span class="trial-chip is-candidate">5%<small>候補</small></span>
+            <span class="trial-chip is-candidate">10%<small>候補</small></span>
+            <span class="trial-chip">15%</span>
+            <span class="trial-chip">20%</span>
+            <span class="trial-chip">100%</span>
+          </div>
+          <ol class="trial-timeline">
+            <li><time>2026.09</time><div><strong>探究テーマを発表</strong><p>こんにゃくで農家を支援し、群馬を盛り上げるテーマを発表。</p></div></li>
+            <li><time>2026.09</time><div><strong>クレープの配合実験</strong><p>0・5・10・15・20・100%の6段階を比較。5%または10%が、こんにゃくの匂いもなく、もちもちでおいしいという結果に。</p></div></li>
+            <li class="is-now"><time>NOW</time><div><strong>販売に向けて準備中</strong><p>ヤツドキクレープと一緒に、商品化へ。</p></div></li>
+          </ol>
         </div>
       </div>
     </section>
 
     <section class="section shop-section" id="shop">
-      <div class="wrap shop-layout">
-        <div class="shop-copy reveal">
-          <p class="kicker">SHOP INFORMATION</p>
-          <h2>ヤツドキクレープ</h2>
-          <p>桐生のクレープ店。パリッと焼いた生地が人気です。</p>
-          <div class="shop-name"><span>OUR PARTNER</span><strong>yatsudoki crepe</strong></div>
-          <p class="shop-note">「やつどき」は、昔の「おやつの時間」。</p>
-        </div>
-        <div class="shop-information reveal">
-          <div class="shop-facts">
-            <h3>店舗情報</h3>
-            <dl>
-              <div><dt>所在地</dt><dd>群馬県桐生市仲町3丁目9-6</dd></div>
-              <div><dt>営業時間</dt><dd>11:00〜16:00<br>土・日・祝 11:00〜17:00</dd></div>
-              <div><dt>定休日</dt><dd>月曜日・第3日曜日</dd></div>
-              <div><dt>電話</dt><dd><a href="tel:09043617665">090-4361-7665</a></dd></div>
-            </dl>
-            <p class="shop-note">営業時間・定休日は変更される場合があります。ご来店前に最新情報をご確認ください。</p>
-            <div class="shop-links">
-              <a class="button button--tomato" href="https://www.instagram.com/yatsudoki_crepe/" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">↗</span></a>
-              <a class="button button--white" href="https://maps.google.com/maps?q=36.40764669585682,139.33880172847205" target="_blank" rel="noopener noreferrer">Google マップ <span aria-hidden="true">↗</span></a>
+      <div class="wrap">
+        <header class="shop-heading reveal">
+          <div>
+            <p class="section-index"><span>03</span>THE SHOP</p>
+            <h2 class="display">おやつの時間に、<br>桐生へ。</h2>
+          </div>
+          <p>「やつどき」は、昔の「おやつの時間」。桐生市仲町で、パリッと焼き上げる生地が人気のクレープ店です。私たちの商品も、ここから届けます。</p>
+        </header>
+
+        <div class="shop-layout">
+          <div class="shop-feature reveal">
+            <svg class="shop-illustration" viewBox="0 0 640 420" role="img" aria-labelledby="shop-illustration-title">
+              <title id="shop-illustration-title">ヤツドキクレープの店先をイメージしたイラスト</title>
+              <rect width="640" height="420" fill="#eaf7fb"/>
+              <circle cx="522" cy="78" r="54" fill="#fffdf9" opacity=".72"/>
+              <path d="M0 349c50-8 88-6 143 1 70 9 135 12 218 8 89-4 182-11 279-25v87H0Z" fill="#dfeee4"/>
+              <path d="M0 374c85-8 150-5 230 1 98 8 210 5 410-12v57H0Z" fill="#d3e7d7" opacity=".7"/>
+              <path d="M62 322c-15-20-14-42 2-59 17 9 26 29 22 48" fill="#eaf1e7" stroke="#4f7656" stroke-width="1.4"/>
+              <path d="M65 317c1-17 8-30 21-40M66 317c-6-12-15-19-26-22" fill="none" stroke="#4f7656" stroke-width="1.4" stroke-linecap="round"/>
+              <rect x="94" y="88" width="452" height="252" rx="6" fill="#fffdf9" stroke="#22343e" stroke-width="2"/>
+              <path d="M80 88h480l-14-26H94Z" fill="#cf4f5e" stroke="#22343e" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M80 88h480v20H80Z" fill="#cf4f5e" stroke="#22343e" stroke-width="2"/>
+              <path d="M112 88v20M146 88v20M180 88v20M214 88v20M248 88v20M282 88v20M316 88v20M350 88v20M384 88v20M418 88v20M452 88v20M486 88v20M520 88v20" stroke="#fbf3e4" stroke-width="3" opacity=".55"/>
+              <rect x="150" y="132" width="230" height="50" rx="3" fill="#fbf3e4" stroke="#22343e" stroke-width="1.6"/>
+              <text x="265" y="165" text-anchor="middle" fill="#22343e" font-family="'DM Serif Display', Georgia, serif" font-size="26" font-style="italic">yatsudoki crepe</text>
+              <rect x="124" y="205" width="224" height="113" rx="3" fill="#d7eef6" stroke="#22343e" stroke-width="1.8"/>
+              <path d="M132 307 340 216M132 255l126-50" stroke="#fffdf9" stroke-width="6" opacity=".34"/>
+              <g transform="translate(186 218)">
+                <path d="M12 8h48l-20 62H32Z" fill="#e7bb6e" stroke="#22343e" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M12 8c8 8 40 8 48 0" fill="#fffdf9" stroke="#22343e" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M20 8c7 10 25 10 32 0" fill="#fff8ea" stroke="#22343e" stroke-width="1.2"/>
+                <circle cx="27" cy="14" r="7" fill="#cf4f5e" stroke="#22343e" stroke-width="1.2"/>
+                <path d="M26 6c3-4 8-5 12-3-2 4-7 6-11 5" fill="#4f7656" stroke="#22343e" stroke-width="1.1" stroke-linejoin="round"/>
+                <path d="M45 25c7-5 15-4 19 2-5 5-13 7-20 4" fill="#fffdf9" stroke="#22343e" stroke-width="1.1" stroke-linejoin="round"/>
+              </g>
+              <circle cx="310" cy="232" r="17" fill="#fffdf9" stroke="#cf4f5e" stroke-width="1.2"/>
+              <text x="310" y="236" text-anchor="middle" fill="#ad3949" font-family="'Zen Kaku Gothic New', sans-serif" font-size="7" font-weight="700">2SS1</text>
+              <rect x="388" y="168" width="106" height="172" rx="4" fill="#fbf3e4" stroke="#22343e" stroke-width="1.8"/>
+              <rect x="401" y="187" width="80" height="83" rx="2" fill="#d7eef6" stroke="#22343e" stroke-width="1.4"/>
+              <path d="M405 266h72" stroke="#22343e" stroke-width="1.2"/>
+              <circle cx="482" cy="258" r="3" fill="#cf4f5e" stroke="#22343e" stroke-width="1"/>
+              <text x="441" y="232" text-anchor="middle" fill="#ad3949" font-family="'Zen Kaku Gothic New', sans-serif" font-size="9" font-weight="700" letter-spacing="1">OPEN</text>
+              <path d="M444 142v-19M444 123h24" stroke="#22343e" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="468" cy="123" r="5" fill="#f4c85a" stroke="#22343e" stroke-width="1.2"/>
+              <path d="M520 330h-40l6-22h28Z" fill="#f1e3c8" stroke="#22343e" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M504 307c-6-15-3-27 6-37 8 10 10 24 4 36M504 306c-12-8-18-20-17-33 12 3 21 12 24 24" fill="#eaf1e7" stroke="#4f7656" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M560 286l24 0 10 44h-44Z" fill="#22343e"/>
+              <text x="572" y="314" text-anchor="middle" fill="#fbf3e4" font-family="'DM Serif Display', Georgia, serif" font-size="11" font-style="italic">crepe</text>
+              <path d="M560 330h34" stroke="#fbf3e4" stroke-width="1" opacity=".6"/>
+              <path d="M74 352h496" stroke="#22343e" stroke-width="1.2" opacity=".2"/>
+              <path d="M576 98c9-10 21-14 34-11-4 12-15 20-28 19" fill="#eaf1e7" stroke="#4f7656" stroke-width="1.2" opacity=".7"/>
+            </svg>
+            <div class="shop-feature-copy">
+              <p class="kicker">yatsudoki crepe</p>
+              <h3>パリッと焼きたてを、<br>おやつの時間に。</h3>
+              <p>桐生市仲町のクレープ店。パリッと焼き上げる生地が人気です。当プロジェクトの商品も、ここから届けます。</p>
             </div>
+          </div>
+
+          <aside class="shop-card reveal" aria-label="店舗情報">
+            <p class="kicker">SHOP INFORMATION</p>
+            <h3>ヤツドキクレープ</h3>
+            <dl class="shop-facts">
+              <div><dt><svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>所在地</dt><dd>群馬県桐生市仲町3丁目9-6</dd></div>
+              <div><dt><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg>営業時間</dt><dd>11:00〜16:00<br>土・日・祝 11:00〜17:00</dd></div>
+              <div><dt><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>定休日</dt><dd>月曜日・第3日曜日</dd></div>
+              <div><dt><svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>電話</dt><dd><a href="tel:09043617665">090-4361-7665</a></dd></div>
+            </dl>
+            <div class="shop-links">
+              <a class="button button--primary" href="https://www.instagram.com/yatsudoki_crepe/" target="_blank" rel="noopener noreferrer">Instagram <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg></a>
+              <a class="button button--outline" href="https://maps.google.com/maps?q=36.40764669585682,139.33880172847205" target="_blank" rel="noopener noreferrer">Google マップ <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg></a>
+            </div>
+            <p class="shop-note">営業時間・定休日は変更される場合があります。ご来店前に最新情報をご確認ください。</p>
             <p class="shop-source">店舗情報：<a href="https://www.city.kiryu.lg.jp/sangyou/kinyu/1018809/1024524.html" target="_blank" rel="noopener noreferrer">桐生市公式サイト</a></p>
+            <p class="shop-quote"><svg class="icon" aria-hidden="true"><use href="#i-leaf"></use></svg><span>「やつどき」は、昔の「おやつの時間」。<br>桐生の街で、焼きたてをどうぞ。</span></p>
+          </aside>
+        </div>
+
+        <div class="shop-map reveal">
+          <div class="shop-map-copy">
+            <p class="kicker">ACCESS</p>
+            <strong>桐生市仲町3丁目9-6</strong>
+            <p>お店へのアクセスは、Google マップをご利用ください。</p>
+            <a href="https://maps.google.com/maps?q=36.40764669585682,139.33880172847205" target="_blank" rel="noopener noreferrer">大きな地図で見る <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg></a>
           </div>
-          <div class="shop-map">
-            <iframe title="ヤツドキクレープの地図（群馬県桐生市仲町3丁目9-6）" src="https://maps.google.com/maps?q=36.40764669585682%2C139.33880172847205&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-          </div>
+          <iframe title="ヤツドキクレープの地図（群馬県桐生市仲町3丁目9-6）" src="https://maps.google.com/maps?q=36.40764669585682%2C139.33880172847205&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         </div>
       </div>
     </section>
 
-    <section class="survey-section">
+    <section class="survey-section" aria-labelledby="survey-title">
       <div class="wrap">
-        <div class="survey-banner reveal">
-          <div><p class="kicker">YOUR FEEDBACK</p><h2>感想を聞かせてください。</h2></div>
-          <a class="button button--tomato" href="../survey/">アンケート <span aria-hidden="true">→</span></a>
+        <div class="survey-card reveal">
+          <div class="survey-copy">
+            <p class="section-index"><span>04</span>YOUR VOICE</p>
+            <h2 class="display" id="survey-title">食べたら、<br>感想を聞かせてください。</h2>
+            <p>こんにゃく粉入りクレープを食べてくれた方へ。あなたの感想が、次のおいしさづくりのヒントになります。</p>
+            <div class="survey-meta"><span>全6問</span><span>約2分</span><span>名前の入力なし</span></div>
+            <div class="survey-actions">
+              <a class="button button--cream" href="../survey/">アンケートに答える <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+              <a class="text-link" href="../">プロジェクトについて知る <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg></a>
+            </div>
+          </div>
+          <div class="survey-visual" aria-hidden="true">
+            <picture>
+              <source srcset="../assets/strawberry-illustration.webp" type="image/webp">
+              <img src="../assets/strawberry-illustration.png" width="640" height="512" alt="" loading="lazy" decoding="async">
+            </picture>
+            <span class="survey-stamp">Thank<br>you!<small>2SS1 × YATSUDOKI</small></span>
+          </div>
         </div>
       </div>
     </section>
@@ -616,11 +345,13 @@
     <div class="wrap">
       <div class="footer-row">
         <a class="brand" href="../"><img class="brand-stamp" src="../assets/project-emblem.png" alt="" aria-hidden="true"><span class="brand-copy"><span class="brand-name">樹徳高等学校 2SS1班</span><span class="brand-sub">こんにゃくで群馬を盛り上げる探究活動</span></span></a>
-        <nav class="footer-nav" aria-label="フッターナビゲーション"><a href="../">プロジェクト紹介</a><a href="#product">商品紹介</a><a href="#shop">お店の紹介</a><a href="#top">ページ上部へ ↑</a></nav>
+        <nav class="footer-nav" aria-label="フッターナビゲーション"><a href="../">プロジェクト紹介</a><a href="#product">商品紹介</a><a href="#shop">お店の紹介</a><a href="../survey/">アンケート</a><a href="#top">ページ上部へ ↑</a></nav>
       </div>
+      <p class="footer-disclaimer">掲載イラストは商品イメージです。実際の商品とは異なる場合があります。店舗情報は桐生市公式サイトを参照しています。営業時間・定休日は変更されることがあるため、ご来店前に最新情報をご確認ください。</p>
       <div class="footer-note"><span>© 2026 樹徳高等学校 2SS1班</span><span>ヤツドキクレープ × こんにゃく粉入りいちごクレープ</span></div>
     </div>
   </footer>
   <script src="../assets/brand.js" defer></script>
+  <script src="../assets/product.js" defer></script>
 </body>
 </html>

@@ -27,7 +27,9 @@ Renderの再デプロイ完了後、このURLを班のメンバーに共有し�
 ## 更新ファイル
 
 - `product/index.html` — 商品ページ
+- `assets/product.css` — 商品ページ専用のスタイル
+- `assets/product.js` — ヘッダー演出とセクション連動ナビ
 - `assets/brand.css`、`assets/brand.js` — 共通スタイルと表示演出
 - `assets/project-emblem.png` — サイトロゴ・アイコン
-- `assets/product-crepe.png` — クレープのイラスト
-- `assets/strawberry-illustration.png` — 苺のイラスト
+- `assets/product-crepe.webp`、`assets/product-crepe.png` — クレープのイラスト（WebP＋フォールバック）
+- `assets/strawberry-illustration.webp`、`assets/strawberry-illustration.png` — 苺のイラスト（WebP＋フォールバック）
